@@ -1,7 +1,7 @@
-# formbotdialogflow
+# Team Dialogflow
 Form Bot - DialogFlow
 
-#Agents
+# Agents
 
 A Dialogflow agent is a virtual agent that handles conversations with your end-users.
  
@@ -12,7 +12,7 @@ Utterance & Triggers
 
  
  
-#Intents
+# Intents
 
 
  
@@ -34,14 +34,14 @@ A more complex intent may also contain the following:
 Contexts: Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what the person is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent.
 Events: With events, you can invoke an intent based on something that has happened, instead of what an end-user communicates.
  
-#Entities
+# Entities
  
 
  
  
 Entities are essentially variables. Entities can be used to send back hard-coded static responses back the user or sent again to a back-end service to do dynamic processing or other routines.
  
-#Contexts
+# Contexts
  
 
  
@@ -49,7 +49,7 @@ Entities are essentially variables. Entities can be used to send back hard-coded
 Contexts allow Dialogflow to keep information while iterating through various different intents and holding information as it goes from one intent to the next.
  
  
-#Fulfillment
+# Fulfillment
  
 
  

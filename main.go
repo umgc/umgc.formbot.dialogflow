@@ -42,17 +42,7 @@ func CheckGoogleCaptcha(response string) bool {
 	return googleResponse["success"].(bool)
 }
 
-func mainpage(res http.ResponseWriter, req *http.Request) {
-	//validate recaptcha; if false then reload page
-	/*captcha := req.FormValue("g-recaptcha-response")
-	valid := CheckGoogleCaptcha(captcha)
 
-	if valid != true {
-		http.ServeFile(res, req, "bad_captcha_login.html")
-	}*/
-	http.ServeFile(res, req, "mainpage.html")
-
-}
 
 func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 	res.WriteHeader(status)
@@ -64,87 +54,6 @@ func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 	}
 }
 
-func ediapi(res http.ResponseWriter, req *http.Request) {
-	//validate recaptcha; if false then reload page
-	/*captcha := req.FormValue("g-recaptcha-response")
-	valid := CheckGoogleCaptcha(captcha)
-
-	if valid != true {
-		http.ServeFile(res, req, "bad_captcha_login.html")
-	}
-
-	*/
-
-	// Check if user is authenticated
-	/*session, _ := store.Get(req, "cookie-name")
-	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
-		http.Error(res, "Forbidden", http.StatusForbidden)
-		return
-	}*/
-
-	//just a basic Struct which will be converted into Json
-	type User struct {
-		Username  string
-		Password  string `json:"-"`
-		IsAdmin   bool
-		CreatedAt time.Time
-	}
-
-	//If the request is not GET then redirect to homepage
-	//if req.Method != "GET" {
-	//	http.ServeFile(res, req, "EDIManager.html")
-
-	//	return
-	//}
-
-	//user := User{} //initialize empty user
-
-	//Marshal or convert user object back to json and write to response
-	//userJson, err := json.Marshal(user)
-	//if err != nil{
-	//	panic(err)
-	//}
-
-	//Set Content-Type header so that clients will know how to read response
-	//res.Header().Set("Content-Type","application/json")
-	//res.WriteHeader(http.StatusOK)
-	//Write json response back to response
-	//res.Write(userJson)
-
-	//Validate user credentials against sql database
-	//username := req.FormValue("username")
-	//password := req.FormValue("password")
-
-	//var databaseUsername string
-	//var databasePassword string
-
-	//err := db.QueryRow("SELECT username, password FROM users WHERE username=?", username).Scan(&databaseUsername, &databasePassword)
-
-	/*if err != nil {
-		//http.Redirect(res, req, "/index", 301)
-		res.Write([]byte("Error, Can't process request"))
-		return
-	}*/
-
-	//err = bcrypt.CompareHashAndPassword([]byte(databasePassword), []byte(password))
-	//if err != nil {
-	//	res.Write([]byte("Failed to Login"))
-	//	return
-	//}
-
-	//Create Cookie
-	//session, _ := store.Get(req, "cookie-name")
-
-	// Authentication goes here
-	// ...
-
-	// Set user as authenticated
-	//session.Values["authenticated"] = true
-	//session.Save(req, res)
-
-	http.ServeFile(res, req, "media/test.json")
-
-}
 
 func robot(res http.ResponseWriter, req *http.Request) {
 
@@ -152,119 +61,9 @@ func robot(res http.ResponseWriter, req *http.Request) {
 
 }
 
-func createhtmlguideline(res http.ResponseWriter, req *http.Request) {
-	// Check if user is authenticated
-	session, _ := store.Get(req, "cookie-name")
-	if auth, ok := session.Values["authenticated"].(bool); !ok || !auth {
-		http.Error(res, "Forbidden", http.StatusForbidden)
-		return
-	}
-	http.ServeFile(res, req, "create_html_guideline.html")
-}
 
-//This is the starting page of the application
-func start(res http.ResponseWriter, req *http.Request) {
 
-	//validate recaptcha; if false then reload page
-	/*captcha := req.FormValue("g-recaptcha-response")
-	valid := CheckGoogleCaptcha(captcha)
 
-	if valid != true {
-		http.ServeFile(res, req, "captcha.html")
-	}*/
-
-	if req.Method != "POST" {
-		//http.ServeFile(res, req, "login.html")
-		res.Write([]byte("Error"))
-		return
-	}
-
-	//no user validation!
-	http.ServeFile(res, req, "main.html")
-
-}
-
-func makenewDirectory(style string, format string, org string, version string, name string) {
-
-	//make dir if not exist
-	//0755  = read, write execuite
-	/*
-		0777 Everyone can read write and execute. On a web server, it is not advisable to use ‘777’ permission for your files and folders, as it allows anyone to add malicious code to your server.
-
-		0644 Only the owner can read and write. Everyone else can only read. No one can execute the file.
-
-		0655 Only the owner can read and write, but not execute the file. Everyone else can read and execute, but cannot modify the file.
-	*/
-	//os.Mkdir("./"+path, 0755)
-	fmt.Println("about to make directory")
-	//os.Mkdir("./"+path, os.FileMode(0522))
-	//err = os.Mkdir("./edi_guidelines/test3", 0755)
-	fmt.Println(err)
-	//path = "./" + path + "/"
-	//os.Mkdir("\""+path+"\"", 0755)
-	//err = os.MkdirAll(path, os.ModePerm)
-
-	//,style,format,org,version,name
-
-	os.MkdirAll("./edi_guidelines/"+style, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org+"/"+version, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org+"/"+version+"/"+name, os.ModePerm)
-
-	//jsonResponse(res, http.StatusCreated, "File uploaded successfully!.")
-	fmt.Println("end of file was saved...")
-}
-
-func saveFile(res http.ResponseWriter, file multipart.File, handle *multipart.FileHeader, path string, style string, format string, org string, version string, name string) {
-	fmt.Println("in save file wtf")
-	data, err := ioutil.ReadAll(file)
-	if err != nil {
-		fmt.Fprintf(res, "%v", err)
-		return
-	}
-
-	//make dir if not exist
-	//0755  = read, write execuite
-	/*
-		0777 Everyone can read write and execute. On a web server, it is not advisable to use ‘777’ permission for your files and folders, as it allows anyone to add malicious code to your server.
-
-		0644 Only the owner can read and write. Everyone else can only read. No one can execute the file.
-
-		0655 Only the owner can read and write, but not execute the file. Everyone else can read and execute, but cannot modify the file.
-	*/
-	//os.Mkdir("./"+path, 0755)
-	fmt.Println("about to make damn directory")
-	//os.Mkdir("./"+path, os.FileMode(0522))
-	//err = os.Mkdir("./edi_guidelines/test3", 0755)
-	fmt.Println(err)
-	//path = "./" + path + "/"
-	//os.Mkdir("\""+path+"\"", 0755)
-	//err = os.MkdirAll(path, os.ModePerm)
-
-	//,style,format,org,version,name
-
-	os.MkdirAll("./edi_guidelines/"+style, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org+"/"+version, os.ModePerm)
-	os.MkdirAll("./edi_guidelines/"+style+"/"+format+"/"+org+"/"+version+"/"+name, os.ModePerm)
-
-	//err = os.Mkdir("./edi_guidelines/kjh", 0755)
-	path = "./edi_guidelines/" + style + "/" + format + "/" + org + "/" + version + "/" + name
-	//fmt.Println("made directory: " + "\"" + path + "\"")
-
-	err = ioutil.WriteFile(path+"/"+handle.Filename, data, 0666)
-	fmt.Println("finished writing  wtf" + path + handle.Filename)
-	if err != nil {
-		fmt.Fprintf(res, "%v", err)
-		return
-	}
-	//jsonResponse(res, http.StatusCreated, "File uploaded successfully!.")
-	fmt.Println("end of file was saved...")
-}
-
-//nice function to send JSON responses!
 // jsonResponse(w, http.StatusCreated, "File uploaded successfully!.")
 func jsonResponse(w http.ResponseWriter, code int, message string) {
 	w.Header().Set("Content-Type", "application/json")
@@ -289,29 +88,7 @@ func RequestLogger(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func googleSearchConsole(res http.ResponseWriter, req *http.Request) {
 
-	http.ServeFile(res, req, "google259e7adf5a143f76.html")
-}
-
-func serviceworker(res http.ResponseWriter, req *http.Request) {
-
-	http.ServeFile(res, req, "sw1.js")
-}
-
-func manifest(res http.ResponseWriter, req *http.Request) {
-
-	http.ServeFile(res, req, "manifest.json")
-}
-
-func gcim(res http.ResponseWriter, req *http.Request) {
-
-	http.ServeFile(res, req, "4041.html")
-}
-func oedi(res http.ResponseWriter, req *http.Request) {
-
-	http.ServeFile(res, req, "4041.html")
-}
 
 func index(res http.ResponseWriter, req *http.Request) {
 	if req.URL.Path != "/" {
@@ -339,29 +116,7 @@ func index(res http.ResponseWriter, req *http.Request) {
 	http.ServeFile(res, req, "index.html")
 }
 
-//XML END
 
-func jsonBeautifyPage(res http.ResponseWriter, req *http.Request) {
-
-	http.ServeFile(res, req, "jsonbeautifypage.html")
-}
-
-func jsonbeautify(res http.ResponseWriter, req *http.Request) {
-
-	in := req.FormValue("jsonDocumentTextBox1")
-	//fmt.Println(in)
-	//xy, _ := strconv.Unquote(input)
-
-	input := json.RawMessage(in)
-
-	x, err := json.MarshalIndent(input, "", "  ")
-	if err != nil {
-		panic(err)
-	}
-	res.Write([]byte(x))
-
-	//fmt.Println(x)
-}
 
 func main() {
 
@@ -390,7 +145,6 @@ func main() {
 	//http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	//http.Handle("/vendor/", http.StripPrefix("/vendor/", http.FileServer(http.Dir("vendor"))))
 	//http.Handle("/media/", http.StripPrefix("/media/", http.FileServer(http.Dir("media"))))
-	//http.Handle("/edi_guidelines/", http.StripPrefix("/edi_guidelines/", http.FileServer(http.Dir("edi_guidelines"))))
 
 	//log file system
 	fileName := "webrequests.log"

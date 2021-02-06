@@ -42,7 +42,7 @@ Events: With events, you can invoke an intent based on something that has happen
  
 Entities are essentially variables. Entities can be used to send back hard-coded static responses back the user or sent again to a back-end service to do dynamic processing or other routines.
  
-#Contexts
+# Contexts
  
 
  

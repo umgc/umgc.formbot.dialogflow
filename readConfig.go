@@ -27,7 +27,7 @@ type Configuration struct {
 }
 
 func config() {
-	c := flag.String("c", "config.config", "Specify the configuration file.")
+	c := flag.String("c", "config.json", "Specify the configuration file.")
 	flag.Parse()
 	file, err := os.Open(*c)
 	if err != nil {

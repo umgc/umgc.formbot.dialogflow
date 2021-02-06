@@ -9,7 +9,18 @@ import (
 )
 
 func basicAuth(h http.HandlerFunc) http.HandlerFunc {
+
+	
+	
+
+
+
+
 	return func(w http.ResponseWriter, r *http.Request) {
+
+		
+	
+
 
 		w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
 

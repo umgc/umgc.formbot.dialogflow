@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"mime/multipart"
 	"net/http"
 	"os"
 	"time"
@@ -42,8 +41,6 @@ func CheckGoogleCaptcha(response string) bool {
 	return googleResponse["success"].(bool)
 }
 
-
-
 func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 	res.WriteHeader(status)
 	if status == http.StatusNotFound {
@@ -54,15 +51,11 @@ func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 	}
 }
 
-
 func robot(res http.ResponseWriter, req *http.Request) {
 
 	http.ServeFile(res, req, "robots.txt")
 
 }
-
-
-
 
 // jsonResponse(w, http.StatusCreated, "File uploaded successfully!.")
 func jsonResponse(w http.ResponseWriter, code int, message string) {
@@ -88,10 +81,8 @@ func RequestLogger(w http.ResponseWriter, r *http.Request) {
 
 }
 
-
-
-func index(res http.ResponseWriter, req *http.Request) {
-	if req.URL.Path != "/" {
+func about(res http.ResponseWriter, req *http.Request) {
+	if req.URL.Path != "/about" {
 		errorHandler(res, req, http.StatusNotFound)
 
 		//log ip
@@ -113,10 +104,8 @@ func index(res http.ResponseWriter, req *http.Request) {
 	//end log
 	log.Println("successfully served index!")
 
-	http.ServeFile(res, req, "index.html")
+	http.ServeFile(res, req, "about.html")
 }
-
-
 
 func main() {
 
@@ -138,10 +127,12 @@ func main() {
 	log.Println("Listening...")
 
 	http.HandleFunc("/", use(myHandler, basicAuth))
-	//http.HandleFunc("/", index)
+	http.HandleFunc("/about", about)
 	//http.HandleFunc("/google259e7adf5a143f76.html", googleSearchConsole)
 	//http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
-	//http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+	http.Handle("/assets/css/", http.StripPrefix("/assets/css/", http.FileServer(http.Dir("assets/css/"))))
+	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
 	//http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	//http.Handle("/vendor/", http.StripPrefix("/vendor/", http.FileServer(http.Dir("vendor"))))
 	//http.Handle("/media/", http.StripPrefix("/media/", http.FileServer(http.Dir("media"))))

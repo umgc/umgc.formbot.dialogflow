@@ -114,12 +114,7 @@ func main() {
 
 	//Initialize captcha key
 	recaptcha.Init("6Lc3XT4UAAAAABac5-cbX23gBDnzUd9_TUYNbWQF")
-	//db, err := sql.Open("mysql", "<username>:<pw>@tcp(<HOST>:<port>)/<dbname>")
-	//db, err = sql.Open("mysql", "appuser1:ZBhgdgemPvOH2nVubhQV@tcp(192.168.178.46:3306)/baseglobe") //Live: appuser1:ZBhgdgemPvOH2nVubhQV@/users TEST:"appuser1:yoyos4life@/erp"
-	//if err != nil {
-	//	panic(err.Error())
-	//}
-	//defer db.Close()
+
 
 	if err != nil {
 		panic(err.Error())

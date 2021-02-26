@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -9,9 +8,9 @@ import (
 
 func getDocument(docid string) (get_doc string) {
 
-	var t Tokenresponse
-	var url = Oauth()
-	method := "POST"
+	//RUle for tempaltes in google docs, the values must always be inside a table!
+	url := "https://docs.googleapis.com/v1/documents/" + docid + "?fields=body(content/table/tableRows/tableCells/content/paragraph/elements/textRun/content)"
+	method := "GET"
 
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, nil)
@@ -20,6 +19,8 @@ func getDocument(docid string) (get_doc string) {
 		fmt.Println(err)
 		return
 	}
+	req.Header.Add("Authorization", "Bearer "+getToken())
+
 	res, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
@@ -28,40 +29,6 @@ func getDocument(docid string) (get_doc string) {
 	defer res.Body.Close()
 
 	body, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	err = json.Unmarshal(body, &t)
-
-	if err != nil {
-		panic(err)
-	}
-
-	token := t.Access_token
-
-	//RUle for tempaltes in google docs, the values must always be inside a table!
-	url = "https://docs.googleapis.com/v1/documents/" + docid + "?fields=body(content/table/tableRows/tableCells/content/paragraph/elements/textRun/content)"
-	method = "GET"
-
-	client = &http.Client{}
-	req, err = http.NewRequest(method, url, nil)
-
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	req.Header.Add("Authorization", "Bearer "+token)
-
-	res, err = client.Do(req)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	defer res.Body.Close()
-
-	body, err = ioutil.ReadAll(res.Body)
 	if err != nil {
 		fmt.Println(err)
 		return

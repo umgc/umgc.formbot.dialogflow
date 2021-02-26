@@ -25,8 +25,10 @@ type Configuration struct {
 	} `json:"Oauth"`
 }
 
+const cfg = "config.json"
+
 func apiUsername() string {
-	jsonFile, err := os.Open("config.json")
+	jsonFile, err := os.Open(cfg)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -37,7 +39,7 @@ func apiUsername() string {
 }
 
 func apiPassword() string {
-	jsonFile, err := os.Open("config.json")
+	jsonFile, err := os.Open(cfg)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -48,7 +50,7 @@ func apiPassword() string {
 }
 
 func Oauth() string {
-	jsonFile, err := os.Open("config.json")
+	jsonFile, err := os.Open(cfg)
 	if err != nil {
 		fmt.Println(err)
 	}

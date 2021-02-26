@@ -140,7 +140,7 @@ func basicAuth(h http.HandlerFunc) http.HandlerFunc {
 				http.ServeFile(w, r, "formfield_action_response.json")
 			} else {
 				fmt.Println("action not found")
-				//TODO: Error response and error logging
+
 				http.ServeFile(w, r, "wildcard_response.json")
 			}
 

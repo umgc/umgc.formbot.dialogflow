@@ -1,18 +1,25 @@
 # Compiled class file
 *.class
 *.exe
+jwt.go.notused
+
+
+#keys
+formscriber_key.json
+serviceaccountkey.json
 
 # Log file
 *.log
 
 # Configuration File
 *.config
+config.json
 
 # BlueJ files
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*.mtj.tmp/
 
 # Package Files #
 *.jar
@@ -30,3 +37,8 @@ hs_err_pid*
 # SSL keys
 *.key
 *.pem
+
+#puml
+*.puml
+*.notused
+*.db

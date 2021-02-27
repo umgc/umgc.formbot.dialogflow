@@ -114,7 +114,7 @@ func main() {
 
 	//Initialize captcha key
 	recaptcha.Init("6Lc3XT4UAAAAABac5-cbX23gBDnzUd9_TUYNbWQF")
-
+	
 
 	if err != nil {
 		panic(err.Error())

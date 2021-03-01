@@ -1,13 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"time"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 type Tokenresponse struct {
@@ -86,6 +86,68 @@ func index(res http.ResponseWriter, req *http.Request) {
 	http.ServeFile(res, req, "index.html")
 }
 
+// RESTful services
+type Articles struct {
+	Type string    `json:"type"`
+	D    []Article `json:"d"`
+}
+type Article struct {
+	ID       string   `json:"id,omitempty"`
+	Name     string   `json:"name,omitempty"`
+	Desc     string   `json:"description,omitempty"`
+	URL      string   `json:"URL"`
+	KeyWords *KeyWord `json:"keywords,omitempty"`
+}
+type KeyWord struct {
+	Name string `json:"name,omitempty"`
+}
+
+func GetArticleEndPoint(w http.ResponseWriter, request *http.Request) {
+	//	REST endpoint to get articles
+	//decoder := json.NewDecoder(request.Body)
+
+	jsonFile, err := os.Open("DATA/GetHelpArticleList.JSON")
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// defer the closing of our jsonFile so that we can parse it later on
+	defer jsonFile.Close()
+
+	// read our opened xmlFile as a byte array.
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	// we initialize our Users array
+	var articles Articles
+
+	// we unmarshal our byteArray which contains our
+	// jsonFile's content into 'users' which we defined above
+	json.Unmarshal(byteValue, &articles)
+
+	/*	fmt.Println("Data Type: " + articles.Type)
+		for i := 0; i < len(articles.D); i++ {
+			fmt.Println("Name: " + articles.D[i].Name)
+		}//*/
+
+	json.NewEncoder(w).Encode(articles)
+	/*
+		var numsData numbers
+		var numsResData numsResponseData
+
+		decoder.Decode(&numsData)
+
+		numsResData = process(numsData)//*/
+	/*	fmt.Println(jsonFile)
+
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.WriteHeader(http.StatusOK)
+		if err := json.NewEncoder(w).Encode(jsonFile); err != nil {
+			panic(err)
+		} //*/
+}
+
 func main() {
 
 	if err != nil {
@@ -100,10 +162,18 @@ func main() {
 	//http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	http.Handle("/assets/css/", http.StripPrefix("/assets/css/", http.FileServer(http.Dir("assets/css/"))))
-	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("images"))))
+	http.Handle("/assets/js/", http.StripPrefix("/assets/js/", http.FileServer(http.Dir("assets/js/"))))
+	http.Handle("/assets/images/", http.StripPrefix("/assets/images/", http.FileServer(http.Dir("images"))))
 	//http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	//http.Handle("/vendor/", http.StripPrefix("/vendor/", http.FileServer(http.Dir("vendor"))))
 	//http.Handle("/media/", http.StripPrefix("/media/", http.FileServer(http.Dir("media"))))
+
+	http.Handle("/site/", http.StripPrefix("/site/", http.FileServer(http.Dir("site"))))
+	http.Handle("/site/STYLE/", http.StripPrefix("/site/STYLE/", http.FileServer(http.Dir("site/STYLE/"))))
+	http.Handle("/site/JS/", http.StripPrefix("/site/JS/", http.FileServer(http.Dir("site/JS/"))))
+	http.Handle("/site/IMG/", http.StripPrefix("/site/IMG/", http.FileServer(http.Dir("site/IMG"))))
+
+	http.HandleFunc("/getArticles", GetArticleEndPoint)
 
 	//log file system
 	fileName := "webrequests.log"
@@ -117,9 +187,14 @@ func main() {
 	log.SetOutput(logFile)
 
 	// Start the HTTPS server in a goroutine
-	if err := http.ListenAndServeTLS(":443", "formscriber.com.pem", "formscriber.key", nil); err != nil {
+	/*
+		if err := http.ListenAndServeTLS(":8080", "formscriber.com.pem", "formscriber.key", nil); err != nil {
+			log.Fatal("failed to start server", err)
+		}//*/
+
+	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal("failed to start server", err)
-	}
+	} //*/
 
 	// Cerbot Free SSL instruction: https://certbot.eff.org/lets-encrypt/windows-other
 

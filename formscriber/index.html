@@ -6,6 +6,15 @@
 <head>
     <meta name="google-site-verification" content="eFaHws1rQxCi2dHJjju-UtRwLoMvtOt80KKiimW48Ps" />
     <title>Form Scriber Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="site/STYLES/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- THis si the development version of vue, when we go live we will change this to the production -->
+    <script src="site/JS/vue.js"></script>
+    <script src="site/JS/axios.min.js"></script>
+    <!-- MOments is a light weight quic way of handling dates: https://momentjs.com/-->
+    <script src="site/JS/moment-with-locales.min.js"></script>
+</head>
+<body>
     <h1>Form Scriber Engine</h1>
 
   <h3>!!!! Please note Form Scriber currently in alpha testing and not officially in production. !!!!
@@ -15,7 +24,7 @@
 </a>
 
 <p>
-    Welcome to Form Bot.
+    Welcome to Form Bot. 
 </p>
 <p>
     Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports.
@@ -71,5 +80,13 @@
     <td id="name">Nicholas Ballo</td>
   </tr>  
 </table>
+
+<main id="dashboard" class="app">
+  <header>Help Articles</header>
+  <ul>
+    <li v-for="a in articles">{{a.name}}<br/>{{a.description}}</li>
+  </ul>
+</main>
+<script src="site/JS/vue.main.js"></script>
 </body>
 </html>

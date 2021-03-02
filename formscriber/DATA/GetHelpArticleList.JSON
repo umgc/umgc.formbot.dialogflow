@@ -5,6 +5,7 @@
             "id":1, 
             "name": "Configureing the Dashboard",
             "URL":"",
+            "category":"",
             "description":"This article covers the proces on how to confiure the dashboard to conect to web services.",
             "keywords":["configuration","setup"]
         },
@@ -12,6 +13,7 @@
             "id":2, 
             "name": "Creating a user",
             "URL":"",
+            "category":"",
             "description":"This article covers the proces on how users are created.",
             "keywords":["Create User","User", "User Setup", "mamanging a User"]
         },
@@ -19,6 +21,7 @@
             "id":3, 
             "name": "Branding the Dashboard",
             "URL":"",
+            "category":"",
             "description":"This article covers the proces on how to apply you can customize the look and feel of the dahboard to match your branding.",
             "keywords":["Branding","setup"]
         }

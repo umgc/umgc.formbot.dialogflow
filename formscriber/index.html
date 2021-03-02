@@ -7,7 +7,8 @@
     <meta name="google-site-verification" content="eFaHws1rQxCi2dHJjju-UtRwLoMvtOt80KKiimW48Ps" />
     <title>Form Scriber Engine</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="site/STYLES/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="site/STYLE/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="site/STYLE/master.css">
     <!-- THis si the development version of vue, when we go live we will change this to the production -->
     <script src="site/JS/vue.js"></script>
     <script src="site/JS/axios.min.js"></script>
@@ -15,78 +16,54 @@
     <script src="site/JS/moment-with-locales.min.js"></script>
 </head>
 <body>
-    <h1>Form Scriber Engine</h1>
+  <main id="dashboard" class="app">
+    <header class="root">    
+      <h1>Form Scriber Engine</h1>
+      <nav>
+        <div class="btn tab" @click="tab(0)">About</div>
+        <div class="btn tab" @click="tab(1)">Meet the Team</div>
+        <div class="btn tab" @click="tab(2)">Help Articles</div>
+        <div class="btn tab" @click="tab(3)">FAQ's</div>
+      </nav>
+    </header>
+    <article class="home" v-if="menuIndex == 0">
+      <h3>!!!! Please note Form Scriber currently in alpha testing and not officially in production. !!!!</h3>
+      <a href="https://assistant.google.com/explore/search?q=formscriber.com&hl=en">
+      🅖 Form Scriber Client
+      </a>
+      <p>Welcome to Form Bot. </p>
+      <p>Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports.</p>
+      <p>Form scriber was developed by Team Dialogflow of University of Maryland Global Campus' Masters IT Software Engineering Capstone course.</p>
+      <p>
+        <a href="https://docs.google.com/document/d/1yW5pGxqwNWkhrDbq4ykZ4b07P42PdQJfzlVGfUBPLq0/edit?usp=sharing">Privacy Policy</a><br/>
+        <a href="https://docs.google.com/document/d/1NoJaVAYKRDnF-3Yy6AKxeZWuVI-rTEJQ9P8UO5lDVcE/edit?usp=sharing">Terms of Service</a>
+      </p>
+    </article>
+    <article id="team" v-if="menuIndex == 1">
+      <h2>Team Dialogflow:</h2>
+      <table>
+        <thead><tr>
+          <th class="role">Role</th>
+          <th class="name">Name</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="m in teamRoster">
+            <td>{{m.role}}</td>
+            <td>{{m.lname}}, {{m.fname}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <article id="articles" v-if="menuIndex == 2">
+      <header>Help Articles</header>
+      <ul>
+        <li v-for="a in articles">{{a.name}}<br/>{{a.description}}</li>
+      </ul>
+    </article>
+    <article id="FAQ" v-if="menuIndex == 3">
 
-  <h3>!!!! Please note Form Scriber currently in alpha testing and not officially in production. !!!!
-  </h3>
-    <a href="https://assistant.google.com/explore/search?q=formscriber.com&hl=en">
-    🅖 Form Scriber Client
-</a>
-
-<p>
-    Welcome to Form Bot. 
-</p>
-<p>
-    Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports.
-</p>
-<p>
-    Form scriber was developed by Team Dialogflow of University of Maryland Global Campus' Masters IT Software Engineering Capstone course.
-</p>
-
-<p></p>
-<a href="https://docs.google.com/document/d/1yW5pGxqwNWkhrDbq4ykZ4b07P42PdQJfzlVGfUBPLq0/edit?usp=sharing">
-    Privacy Policy
-</a>
-<p></p>
-<a href="https://docs.google.com/document/d/1NoJaVAYKRDnF-3Yy6AKxeZWuVI-rTEJQ9P8UO5lDVcE/edit?usp=sharing">
-    Terms of Service
-</a>
-
-
-<h2>Team Dialogflow:</h2>
-
-<table>
-  <caption>Team Dialogflow</caption>
-  <tr>
-    <th id="role">Role</th>
-    <th id="name">Name</th>
-  </tr>
-  <tr>
-    <td id="role">Project Manager</td>
-    <td id="name">Stefon Williams</td>
-  </tr>
-  <tr>
-    <td id="role">Lead Developer/DevSecOps</td>
-    <td id="name">Caleb Crickette</td>
-  </tr>
-  <tr>
-    <td id="role">Developer</td>
-    <td id="name">Thomas Barton</td>
-  </tr>
-  <tr>
-    <td id="role">Developer</td>
-    <td id="name">​​​​​​​Sohail Sobhani</td>
-  </tr>
-  <tr>
-    <td id="role">Developer</td>
-    <td id="name">Abdul Kamara</td>
-  </tr>
-  <tr>
-    <td id="role">Business Analyst</td>
-    <td id="name">Eugene Kim</td>
-  </tr>
-  <tr>
-    <td id="role">Test Engineer</td>
-    <td id="name">Nicholas Ballo</td>
-  </tr>  
-</table>
-
-<main id="dashboard" class="app">
-  <header>Help Articles</header>
-  <ul>
-    <li v-for="a in articles">{{a.name}}<br/>{{a.description}}</li>
-  </ul>
-</main>
-<script src="site/JS/vue.main.js"></script>
+    </article>
+  </main>
+  <script src="site/JS/vue.main.js"></script>
 </body>
 </html>

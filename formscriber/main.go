@@ -86,7 +86,13 @@ func index(res http.ResponseWriter, req *http.Request) {
 	http.ServeFile(res, req, "index.html")
 }
 
-// RESTful services
+/* 2.0 RESTful services
+ * the following are the REST request handlers
+ */
+
+/* 2.1 GET Hep Articles
+ * URL: http://localhost:8080/api/getArticles
+ */
 type Articles struct {
 	Type string    `json:"type"`
 	D    []Article `json:"d"`
@@ -104,8 +110,6 @@ type KeyWord struct {
 
 func GetArticleEndPoint(w http.ResponseWriter, request *http.Request) {
 	//	REST endpoint to get articles
-	//decoder := json.NewDecoder(request.Body)
-
 	jsonFile, err := os.Open("DATA/GetHelpArticleList.JSON")
 
 	if err != nil {
@@ -115,37 +119,48 @@ func GetArticleEndPoint(w http.ResponseWriter, request *http.Request) {
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
 
-	// read our opened xmlFile as a byte array.
+	// read our opened JSON as a byte array.
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 
 	// we initialize our Users array
 	var articles Articles
-
-	// we unmarshal our byteArray which contains our
-	// jsonFile's content into 'users' which we defined above
 	json.Unmarshal(byteValue, &articles)
 
-	/*	fmt.Println("Data Type: " + articles.Type)
-		for i := 0; i < len(articles.D); i++ {
-			fmt.Println("Name: " + articles.D[i].Name)
-		}//*/
-
 	json.NewEncoder(w).Encode(articles)
-	/*
-		var numsData numbers
-		var numsResData numsResponseData
+}
 
-		decoder.Decode(&numsData)
+/* 2.2 GET Team
+ * URL: http://localhost:8080/api/getTeam
+ */
+type Team struct {
+	Type string       `json:"type"`
+	D    []TeamMember `json:"d"`
+}
+type TeamMember struct {
+	FName string `json:"fname"`
+	LName string `json:"lname"`
+	Role  string `json:"role"`
+}
 
-		numsResData = process(numsData)//*/
-	/*	fmt.Println(jsonFile)
+func GetTeamEndPoint(w http.ResponseWriter, request *http.Request) {
+	//	REST endpoint to get articles
+	jsonFile, err := os.Open("DATA/GetTeam.JSON")
 
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.WriteHeader(http.StatusOK)
-		if err := json.NewEncoder(w).Encode(jsonFile); err != nil {
-			panic(err)
-		} //*/
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	// defer the closing of our jsonFile so that we can parse it later on
+	defer jsonFile.Close()
+
+	// read our opened JSON as a byte array.
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+
+	// we initialize our Users array
+	var team Team
+	json.Unmarshal(byteValue, &team)
+
+	json.NewEncoder(w).Encode(team)
 }
 
 func main() {
@@ -174,6 +189,7 @@ func main() {
 	http.Handle("/site/IMG/", http.StripPrefix("/site/IMG/", http.FileServer(http.Dir("site/IMG"))))
 
 	http.HandleFunc("/getArticles", GetArticleEndPoint)
+	http.HandleFunc("/getTeam", GetTeamEndPoint)
 
 	//log file system
 	fileName := "webrequests.log"
@@ -192,7 +208,7 @@ func main() {
 			log.Fatal("failed to start server", err)
 		}//*/
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8081", nil); err != nil {
 		log.Fatal("failed to start server", err)
 	} //*/
 

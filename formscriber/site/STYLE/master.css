@@ -1,0 +1,13 @@
+/* 1.0 General */
+html{font-size: 16px;}
+
+/* 2.0 Controls and links */
+.btn{ 
+    background-color: #313030;
+    border: 1px solid #313030;
+    color:#fff;
+}
+.btn:hover{
+    background-color: #fff;
+    color: #313030;
+}

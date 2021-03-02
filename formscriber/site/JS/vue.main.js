@@ -5,18 +5,26 @@ new Vue({
     data: {
         title:"FormBot Dashboard",
         articles:[],
+        teamRoster:[],
         faqs:{},
+        menuIndex:0,
 		error:[]
     },
     // you would use this to load data. for this you will not need to wory about it
     mounted: function () {
         var self = this, 
-            url = "http://localhost:8080/getArticles";
-        axios.get(url)
-            .then(function (r) {
+            getArticles = "http://localhost:8081/getArticles",
+            getTeam = "http://localhost:8081/getTeam";
+        
+            axios.all([
+                axios.get(getArticles),
+                axios.get(getTeam)
+              ])
+              .then(r => {
                 // handle success
-                console.log(r.data);
-                self.articles = r.data.d;
+                console.log(r[1].data.d);
+                self.articles = r[0].data.d;
+                self.teamRoster = r[1].data.d;
             })
             .catch(function (e) {
                 // handle error
@@ -32,6 +40,9 @@ new Vue({
     },
     // methods are functions that react to user action
     methods: {
+        tab(id){
+            this.menuIndex = id;
+        }
     }
 });
 

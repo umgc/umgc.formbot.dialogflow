@@ -1,0 +1,9 @@
+{
+    "type":"FAQ List",
+    "d":[
+        {
+            "Q":"question",
+            "A":"answer"
+        }
+    ]
+}

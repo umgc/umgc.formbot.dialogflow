@@ -1,13 +1,58 @@
 /* 1.0 General */
 html{font-size: 16px;}
+body{font-size: 1.25rem;}
 
 /* 2.0 Controls and links */
 .btn{ 
     background-color: #313030;
     border: 1px solid #313030;
     color:#fff;
+    font-size: 1.25rem;
 }
 .btn:hover{
     background-color: #fff;
     color: #313030;
+}
+
+/* 3.0 Tables */
+thead{background-color: #313030;}
+thead th{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    width: 300px;
+}
+tbody{border: 1px solid #ccc;}
+tbody tr:nth-child(even) {background: #ccc;}
+
+/* 4.0 Branding */
+/* 4.1 Logo */
+header.root{
+    background: #313030;
+    padding: 10px;
+}
+#logo{margin-bottom: 20px;}
+#logo g path{
+    fill: #fff;
+}
+
+/* 3.2 Panels */
+article.panel{
+    padding: 10px;
+}
+
+/* 3.2.4 Help article */
+
+article.helpArticle{
+    margin-bottom: 20px;
+}
+article.helpArticle header.title{
+    background-color: #313030;
+    color:#fff;
+    padding: 5px;
+    font-size: 1.5rem;
+}
+article.helpArticle section.content{
+    padding: 5px;
+    border: 1px solid #313030;
 }

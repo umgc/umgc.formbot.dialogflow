@@ -2,8 +2,16 @@
     "type":"FAQ List",
     "d":[
         {
-            "Q":"question",
-            "A":"answer"
+            "q":"question",
+            "a":"answer"
+        },
+        {
+            "q":"question",
+            "a":"answer"
+        },
+        {
+            "q":"question",
+            "a":"answer"
         }
     ]
 }

@@ -10,7 +10,7 @@ new Vue({
             articles:"",
             faqs:"",
         },
-        faqs:{},
+        FAQs:{},
         menuIndex:0,
 		error:[]
     },
@@ -18,21 +18,27 @@ new Vue({
     mounted: function () {
         var self = this, 
             getArticles = "http://localhost:8081/getArticles",
-            getTeam = "http://localhost:8081/getTeam";
+            getTeam = "http://localhost:8081/getTeam",
+            getFAQs = "http://localhost:8081/getFAQs";
         
             axios.all([
                 axios.get(getArticles),
-                axios.get(getTeam)
+                axios.get(getTeam),
+                axios.get(getFAQs)
               ])
               .then(r => {
                 // handle success
-                console.log(r[1].data.d);
+                console.log(r[2].data.d);
                 self.articles = r[0].data.d;
                 self.teamRoster = r[1].data.d;
+                var tempFAQarr = r[2].data.d;
+                tempFAQarr.map(o => (o.show = false));
+                self.FAQs =tempFAQarr;
             })
             .catch(function (e) {
                 // handle error
                 console.log(e);
+                self.error = e;
             })
             .then(function () {
                 // always executed
@@ -41,10 +47,9 @@ new Vue({
     },
     // computer is where you can create functions that can mutated that data as the view is refreshed
     computed:{
-        filteredArticles: function () {
-//        var sortKey = this.sortKey;
+        filteredArticles() {
+//        The following is a filter feature. it takes the filter key inputed into a serach box and filters ALL values in each key of a object
           var filterKey = this.filterKey.articles && this.filterKey.articles.toLowerCase();
-//        var order = this.sortOrders[sortKey] || 1;
           var data = this.articles;
           if (filterKey) {
               data = data.filter(function (row) {
@@ -53,6 +58,9 @@ new Vue({
                 })
               })
           }
+//      The following is a sort feature that will sort a coulmn within a row
+//        var order = this.sortOrders[sortKey] || 1;
+//        var sortKey = this.sortKey;
 /*        if (sortKey) {
             data = data.slice().sort(function(a, b) {
               a = a[sortKey];
@@ -61,6 +69,9 @@ new Vue({
             });
           }//*/
           return data;
+        },
+        filteredFAQs(){
+//      TODO: create a filter of FAQs. Might be best to just copy filteredArticles
         }
     },    
     filters: {

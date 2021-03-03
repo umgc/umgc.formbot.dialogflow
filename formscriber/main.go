@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 	"time"
-
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -31,7 +30,7 @@ func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 
 func robot(res http.ResponseWriter, req *http.Request) {
 
-	http.ServeFile(res, req, "robots.txt")
+	http.ServeFile(res, req, "assets/robots.txt")
 
 }
 
@@ -64,7 +63,7 @@ func about(res http.ResponseWriter, req *http.Request) {
 	//end log
 	log.Println("successfully served about!")
 
-	http.ServeFile(res, req, "about.html")
+	http.ServeFile(res, req, "html/about.html")
 }
 
 func index(res http.ResponseWriter, req *http.Request) {
@@ -83,7 +82,7 @@ func index(res http.ResponseWriter, req *http.Request) {
 	//end log
 	log.Println("successfully served index!")
 
-	http.ServeFile(res, req, "index.html")
+	http.ServeFile(res, req, "html/index.html")
 }
 
 func main() {
@@ -113,14 +112,19 @@ func main() {
 		panic(err)
 	}
 	defer logFile.Close()
-	// direct all log messages to webrequests.log
-	log.SetOutput(logFile)
+
 
 	// Start the HTTPS server in a goroutine
+	log.Fatal(http.ListenAndServe(":80", nil))
+
 	if err := http.ListenAndServeTLS(":443", "formscriber.com.pem", "formscriber.key", nil); err != nil {
 		log.Fatal("failed to start server", err)
 	}
 
+	log.Println("Server running on http 80 and https 443")
 	// Cerbot Free SSL instruction: https://certbot.eff.org/lets-encrypt/windows-other
+	
+	// direct all log messages to webrequests.log
+	log.SetOutput(logFile)
 
 }

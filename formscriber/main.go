@@ -112,16 +112,19 @@ func main() {
 		panic(err)
 	}
 	defer logFile.Close()
-	// direct all log messages to webrequests.log
-	log.SetOutput(logFile)
+
 
 	// Start the HTTPS server in a goroutine
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":80", nil))
 
 	if err := http.ListenAndServeTLS(":443", "formscriber.com.pem", "formscriber.key", nil); err != nil {
 		log.Fatal("failed to start server", err)
 	}
 
+	log.Println("Server running on http 80 and https 443")
 	// Cerbot Free SSL instruction: https://certbot.eff.org/lets-encrypt/windows-other
+	
+	// direct all log messages to webrequests.log
+	log.SetOutput(logFile)
 
 }

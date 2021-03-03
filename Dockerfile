@@ -7,4 +7,9 @@ ADD go.mod /app
 ADD go.sum /app
 ADD formscriber /app/formscriber
 
-RUN make
+RUN go mod download
+
+EXPOSE 80
+EXPOSE 443
+
+CMD make

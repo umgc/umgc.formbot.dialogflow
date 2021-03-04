@@ -16,11 +16,11 @@ ssl-local:
 	-keyout formscriber/formscriber.key -newkey rsa:2048 -nodes -sha256 \
 	-subj '/CN=localhost'
 
+run-docker: build-docker
+	docker run -p 8080:80 $(REGISTRY).azurecr.io/$(SERVICE)
+
 build-docker:
 	docker build -t $(REGISTRY).azurecr.io/$(SERVICE) .
-
-run-docker:
-	docker run -p 8080:80 $(REGISTRY).azurecr.io/$(SERVICE)
 
 deploy: aks-login push-image
 	helm upgrade --install formscriberapi deploy/formscriberapi/ --namespace $(NAMESPACE)

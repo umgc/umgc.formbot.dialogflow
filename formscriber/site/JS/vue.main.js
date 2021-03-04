@@ -17,6 +17,7 @@ new Vue({
     // you would use this to load data. for this you will not need to wory about it
     mounted: function () {
         var self = this, 
+            test = "http://localhost:8080/VehiclesOfInterestWebServices/webresources/model.reasonforinterest",
             getArticles = "http://localhost:8081/getArticles",
             getTeam = "http://localhost:8081/getTeam",
             getFAQs = "http://localhost:8081/getFAQs";
@@ -24,11 +25,12 @@ new Vue({
             axios.all([
                 axios.get(getArticles),
                 axios.get(getTeam),
-                axios.get(getFAQs)
+                axios.get(getFAQs),
+                axios.get(test)
               ])
               .then(r => {
                 // handle success
-                console.log(r[2].data.d);
+                console.log(r[3]);
                 self.articles = r[0].data.d;
                 self.teamRoster = r[1].data.d;
                 var tempFAQarr = r[2].data.d;
@@ -72,6 +74,17 @@ new Vue({
         },
         filteredFAQs(){
 //      TODO: create a filter of FAQs. Might be best to just copy filteredArticles
+          var filterKey = this.filterKey.articles && this.filterKey.articles.toLowerCase();
+          var data = this.FAQs;
+          if (filterKey) {
+              data = data.filter(function (row) {
+                return Object.keys(row).some(function (key) {
+                  return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+                })
+              })
+          }
+        
+        return data;
         }
     },    
     filters: {

@@ -23,6 +23,7 @@
         <div class="btn tab" @click="tab(1)">Meet the Team</div>
         <div class="btn tab" @click="tab(2)">Help Articles</div>
         <div class="btn tab" @click="tab(3)">FAQ's</div>
+        <div class="btn tab" @click="tab(4)">From Scriber</div>
       </nav>
     </header>
     <article id="home" class="panel" v-if="menuIndex == 0">
@@ -69,6 +70,15 @@
        2. Create a v-if for each to show and hide answers (a) under questions (q)
        3. Create a serach
       -->
+    </article>
+    <article id="App" v-if="menuIndex == 4">
+      <header>App</header>
+      <iframe
+        allow="microphone;"
+        width="350"
+        height="430"
+        src="https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470">
+    </iframe>
     </article>
   </main>
   <script src="site/JS/vue.main.js"></script>

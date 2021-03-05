@@ -17,9 +17,9 @@ new Vue({
     // you would use this to load data. for this you will not need to wory about it
     mounted: function () {
         var self = this, 
-            getArticles = "http://localhost:8081/getArticles",
-            getTeam = "http://localhost:8081/getTeam",
-            getFAQs = "http://localhost:8081/getFAQs";
+            getArticles = "/getArticles",
+            getTeam = "/getTeam",
+            getFAQs = "/getFAQs";
         
             axios.all([
                 axios.get(getArticles),

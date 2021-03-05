@@ -1,6 +1,6 @@
 # App Config
 SERVICE=formscriberapi
-VERSION=0.1
+VERSION=0.2
 
 # Kubernetes Config
 RESOURCE_GROUP=formscriber
@@ -17,10 +17,13 @@ ssl-local:
 	-subj '/CN=localhost'
 
 run-docker: build-docker
-	docker run -p 8080:80 $(REGISTRY).azurecr.io/$(SERVICE)
+	docker run -p 8080:80 --name formscriberapi $(REGISTRY).azurecr.io/$(SERVICE)
 
 build-docker:
 	docker build -t $(REGISTRY).azurecr.io/$(SERVICE) .
+
+rm-docker:
+	docker rm -f formscriberapi
 
 deploy: aks-login push-image
 	helm upgrade --install formscriberapi deploy/formscriberapi/ --namespace $(NAMESPACE)

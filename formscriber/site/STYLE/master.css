@@ -25,23 +25,18 @@ thead th{
 tbody{border: 1px solid #ccc;}
 tbody tr:nth-child(even) {background: #ccc;}
 
-/* 4.0 Branding */
-/* 4.1 Logo */
-header.root{
-    background: #313030;
-    padding: 10px;
-}
-#logo{margin-bottom: 20px;}
-#logo g path{
-    fill: #fff;
-}
+/* 4.0 Navagation */
+#mobileMenu i{color: #fff;}
 
-/* 3.2 Panels */
+/* 5.0 Layout */
+
+
+/* 5.1 Panels */
 article.panel{
     padding: 10px;
 }
 
-/* 3.2.4 Help article */
+/* 5.1.1 Help article */
 
 article.helpArticle{
     margin-bottom: 20px;
@@ -55,4 +50,22 @@ article.helpArticle header.title{
 article.helpArticle section.content{
     padding: 5px;
     border: 1px solid #313030;
+}
+
+/* 5.1.1 App */
+#App iframe{
+    width: calc(100vw - 20px);
+    max-width: 800px;
+    height: 430px;
+}
+
+/* 6.0 Branding */
+/* 6.1 Logo */
+header.root{
+    background: #313030;
+    padding: 10px;
+}
+#logo{margin-bottom: 20px;}
+#logo g path{
+    fill: #fff;
 }

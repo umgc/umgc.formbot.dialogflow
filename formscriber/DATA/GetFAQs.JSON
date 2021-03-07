@@ -1,0 +1,17 @@
+{
+    "type":"FAQ List",
+    "d":[
+        {
+            "q":"question",
+            "a":"answer"
+        },
+        {
+            "q":"question",
+            "a":"answer"
+        },
+        {
+            "q":"question",
+            "a":"answer"
+        }
+    ]
+}

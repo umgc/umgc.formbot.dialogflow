@@ -73,7 +73,24 @@
        3. Create a serach
       -->
     </article>
+    <article id="App" v-if="menuIndex == 4">
+      <header>App</header>
+      <section class="content wrapper">
+          
+  
+        <form-scriber
+          :link="bot">
+        </form-scriber>
+        <forms
+          @openreportreader="openReportEditor($event)"
+          :list="formList"
+          :filter-key="filterKey.forms">
+        </forms>
+      </section>
+    </article>
   </main>
+  <script src="site/JS/componet.formScriber.js"></script>
+  <script src="site/JS/componet.forms.js"></script>
   <script src="site/JS/vue.main.js"></script>
 </body>
 </html>

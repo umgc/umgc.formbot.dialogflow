@@ -2,15 +2,15 @@
     "type":"FAQ List",
     "d":[
         {
-            "q":"question",
+            "q":"Why is my List of Templates not Showing?",
             "a":"answer"
         },
         {
-            "q":"question",
-            "a":"answer"
+            "q":"How do I start?",
+            "a":"<p>To start say 'Start Report', then copy the URL from your template to Form Scriber. Then Just say the name of the field tou want to input into and then the value you wish to enter.</p>"
         },
         {
-            "q":"question",
+            "q":"How do I conect templates?",
             "a":"answer"
         }
     ]

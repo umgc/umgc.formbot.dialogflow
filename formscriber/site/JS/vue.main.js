@@ -9,7 +9,13 @@ new Vue({
     filterKey:{
       articles:"",
       faqs:"",
+      forms:""
     },
+    bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
+    formList:[
+      {formName: "T1", URLe: "https://docs.google.com/document/d/e/2PACX-1vSfv0ChJElCQbG0asDohdzZ90KetfqRf6jv7D3Vd8VHn3R5o5dHBgxqgkesGtQ3fnHvIdqrl8V-GcrJ/pub?embedded=true", URLl: "https://docs.google.com/document/d/1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY/edit"},
+      {formName: "T2", URLe: "https://docs.google.com/document/d/e/2PACX-1vSfv0ChJElCQbG0asDohdzZ90KetfqRf6jv7D3Vd8VHn3R5o5dHBgxqgkesGtQ3fnHvIdqrl8V-GcrJ/pub?embedded=true", URLl: "https://docs.google.com/document/d/1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY/edit"}
+    ],
     FAQs:{},
     menuIndex:0,
     showMenu: true,

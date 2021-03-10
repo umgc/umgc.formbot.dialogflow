@@ -28,9 +28,15 @@ Vue.component('forms', {
         navigator.clipboard.writeText(txt);
     },
     test(){
-/*      axios.post('/user', {
-        "driveUrl": "https://www.googleapis.com/drive/v3/files?docid=1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt"
-       })
+      let config = {
+        headers: {
+          'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='
+        }
+      }
+      axios.post('https://www.formscriber.com/drive', {
+        "driveUrl": "https://www.googleapis.com/drive/v3/files?docid=1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt"},
+        config
+       )
       .then(function (response) {
         console.log('**YAY**');
         console.log(response);
@@ -42,7 +48,7 @@ Vue.component('forms', {
       
       var data = JSON.stringify({"driveUrl":"https://drive.google.com/drive/u/0/folders/1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt?ths=true"});
        
-    var config = {
+/*    var config = {
         method: 'post',
         url: 'https://www.formscriber.com/drive',
         headers: { 

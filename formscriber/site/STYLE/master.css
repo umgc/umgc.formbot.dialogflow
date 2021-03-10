@@ -65,7 +65,10 @@ header.root{
     background: #313030;
     padding: 10px;
 }
-#logo{margin-bottom: 20px;}
+#logo{
+    margin-bottom: 20px;
+    max-height: 150px;
+}
 #logo g path{
     fill: #fff;
 }

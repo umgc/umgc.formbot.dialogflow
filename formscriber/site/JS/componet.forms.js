@@ -26,6 +26,39 @@ Vue.component('forms', {
     },
     copyTextArea(txt) {
         navigator.clipboard.writeText(txt);
+    },
+    test(){
+/*      axios.post('/user', {
+        "driveUrl": "https://www.googleapis.com/drive/v3/files?docid=1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt"
+       })
+      .then(function (response) {
+        console.log('**YAY**');
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log('**OPPS**');
+        console.log(error);
+      });//*/
+      
+      var data = JSON.stringify({"driveUrl":"https://drive.google.com/drive/u/0/folders/1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt?ths=true"});
+       
+    var config = {
+        method: 'post',
+        url: 'https://www.formscriber.com/drive',
+        headers: { 
+   //       'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=', 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+       
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });//*/
     }
   },
   filters: {
@@ -41,7 +74,9 @@ Vue.component('forms', {
   <article id="docs" class="list" style="float: left; width: 300px; height: 400px;">
     <input placeholder="Enter URL to Template Directory in Google Drive"></input>
     <ul>
-      <li v-for="form in filteredForms">{{form.formName}}<div class="btn" @click="copyTextArea(form.URLl)">URL</div>
+      <li v-for="form in filteredForms">{{form.formName}}
+      <div class="btn" @click="test()">Test</div>  
+      <div class="btn" @click="copyTextArea(form.URLl)">URL</div>
         <iframe src="https://docs.google.com/document/d/e/2PACX-1vSfv0ChJElCQbG0asDohdzZ90KetfqRf6jv7D3Vd8VHn3R5o5dHBgxqgkesGtQ3fnHvIdqrl8V-GcrJ/pub?embedded=true"></iframe>
       </li>
     </ul>

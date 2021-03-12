@@ -90,6 +90,7 @@
           
         </header>
         <forms
+          v-if="showFormTemplates"
           @openreportreader="openReportEditor($event)"
           :list="formList"
           :filter-key="filterKey.forms">

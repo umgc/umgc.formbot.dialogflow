@@ -1,3 +1,8 @@
+var consoleStyle = {};
+    consoleStyle['Defualt'] = "";
+    consoleStyle['Debug-1'] = "color:ornage;font-weight:bold;";
+    consoleStyle['Success'] = "color:green;font-weight:bold;";
+    consoleStyle['Error'] = "color:red;font-weight:bold;";
 new Vue({
 // The following will set where in the HTML you will use VUE
   el: '#dashboard.app',
@@ -12,13 +17,12 @@ new Vue({
       forms:""
     },
     bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
-    formList:[
-      {formName: "T1", URLe: "https://docs.google.com/document/d/e/2PACX-1vSfv0ChJElCQbG0asDohdzZ90KetfqRf6jv7D3Vd8VHn3R5o5dHBgxqgkesGtQ3fnHvIdqrl8V-GcrJ/pub?embedded=true", URLl: "https://docs.google.com/document/d/1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY/edit"},
-      {formName: "T2", URLe: "https://docs.google.com/document/d/e/2PACX-1vSfv0ChJElCQbG0asDohdzZ90KetfqRf6jv7D3Vd8VHn3R5o5dHBgxqgkesGtQ3fnHvIdqrl8V-GcrJ/pub?embedded=true", URLl: "https://docs.google.com/document/d/1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY/edit"}
-    ],
+    formTemplatesURL: "",
+    formList:[],
     FAQs:{},
     menuIndex:0,
     showMenu: true,
+    showFormTemplates: false,
     error:[]
   },
 // you would use this to load data. for this you will not need to wory about it
@@ -44,6 +48,7 @@ new Vue({
       })
       .catch(function (e) {
 // handle error
+        console.log('%cERROR: Mounting data', onsoleStyle['Error']);
         console.log(e);
         self.error = e;
       })
@@ -109,6 +114,90 @@ new Vue({
       },
       togelMenu(){
 
+      },
+      pullTemplateList(){
+        var self = this;
+        if(self.formTemplatesURL !== ""){
+          var URL = "https://www.formscriber.com/drive",
+            config = {
+              headers: {
+                'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='
+              }
+            },
+            data = JSON.stringify({"driveUrl": self.formTemplatesURL});
+        
+/*            axios.get(URL, data, config
+             )
+            .then(function (r) {
+              console.log('**YAY**');
+              console.log(r);
+//            self.formList = r.data.value.files;
+            })
+            .catch(function (e) {
+              console.log('%c**OPPS**', "color:red;font-size:2rem;");
+				console.log("%cError: %c"+ JSON.stringify(error), "color:red;font-weight:bold;", "");
+
+            });//*/
+            
+            var self = this, 
+                config = {
+                method: 'get',
+                url: 'https://formscriber.com/drive',
+                headers: { 
+                  'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=', 
+                  'Content-Type': 'application/json'
+  //               'Cookie': '__cfduid=dd3662af9543133b6ca6a9e371b32cd221615406325'
+                },
+                data: JSON.stringify({"driveUrl": self.formTemplatesURL})
+            };
+             
+            axios(config)
+            .then(function (response) {
+              console.log(JSON.stringify(response.data));
+              
+            })
+            .catch(function (error) {
+              
+              console.log('%cERROR: Mounting data', onsoleStyle['Error'])
+              console.log(error);
+            });
+        }
+  
+  /*    var config = {
+          method: 'post',
+          url: 'https://www.formscriber.com/drive',
+          headers: { 
+     //       'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=', 
+            'Content-Type': 'application/json'
+          },
+          data : data
+        };
+         
+        axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });//*/
+  
+  /*      var data = JSON.stringify({"driveUrl":"https://drive.google.com/drive/u/0/folders/1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt?ths=true"});
+   
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        
+        xhr.addEventListener("readystatechange", function() {
+          if(this.readyState === 4) {
+            console.log(this.responseText);
+          }
+        });
+        
+        xhr.open("POST", "https://formscriber.com/drive");
+        xhr.setRequestHeader("Authorization", "Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        //xhr.setRequestHeader("Cookie", "__cfduid=dd3662af9543133b6ca6a9e371b32cd221615406325");
+        
+        xhr.send(data);//*/
       }
     }
 });

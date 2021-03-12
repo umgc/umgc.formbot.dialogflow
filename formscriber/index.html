@@ -58,7 +58,7 @@
     </article>
     <article id="articles" class="panel" v-if="menuIndex == 2">
       <header>Help Articles</header>      
-      <input v-model="filterKey.articles" class="form-control" placeholder=" Input Search"/>
+      <input v-model="filterKey.articles" onkeypress="return event.keyCode!=13" class="form-control" placeholder=" Input Search"/>
       <section class="list">
         <article class="helpArticle" v-for="a in filteredArticles">
           <header class="title">{{a.name}}</header>
@@ -81,11 +81,19 @@
         <form-scriber
           :link="bot">
         </form-scriber>
-        <forms
+      </section>
+      <section>
+        <header>
+          <input v-model="formTemplatesURL" class="form-control" placeholder="Input URL to Google Drive"/>
+          <div @click="pullTemplateList" class="btn">Submit</div>
+          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Tempaltes"/>
+          
+        </header>
+        <!--<forms
           @openreportreader="openReportEditor($event)"
           :list="formList"
           :filter-key="filterKey.forms">
-        </forms>
+        </forms>-->
       </section>
     </article>
   </main>

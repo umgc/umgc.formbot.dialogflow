@@ -1,4 +1,6 @@
-var consoleStyle = {};
+var curentProtcol = window.location.protocol,
+    curentHost = window.location.host,
+    consoleStyle = {};
     consoleStyle['Defualt'] = "";
     consoleStyle['Debug-1'] = "color:ornage;font-weight:bold;";
     consoleStyle['Success'] = "color:green;font-weight:bold;";
@@ -28,9 +30,9 @@ new Vue({
 // you would use this to load data. for this you will not need to wory about it
   mounted: function () {
     var self = this, 
-    getArticles = "http://localhost:8081/getArticles",
-    getTeam = "http://localhost:8081/getTeam",
-    getFAQs = "http://localhost:8081/getFAQs";
+    getArticles = curentProtcol + "//" + curentHost + "/getArticles",
+    getTeam = curentProtcol + "//" + curentHost + "/getTeam",
+    getFAQs = curentProtcol + "//" + curentHost + "/getFAQs";
     
     axios.all([
       axios.get(getArticles),
@@ -118,7 +120,7 @@ new Vue({
       pullTemplateList(){
         var self = this;
         if(self.formTemplatesURL !== ""){
-          var URL = "https://www.formscriber.com/drive",
+          var URL = curentProtcol + "//" + curentHost + "/drive",
             config = {
               headers: {
                 'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='
@@ -142,7 +144,7 @@ new Vue({
             var self = this, 
                 config = {
                 method: 'get',
-                url: 'https://formscriber.com/drive',
+                url: curentProtcol + "//" + curentHost + '/drive',
                 headers: { 
                   'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=', 
                   'Content-Type': 'application/json'
@@ -152,14 +154,16 @@ new Vue({
             };
              
             axios(config)
-            .then(function (response) {
-              console.log(JSON.stringify(response.data));
+            .then(function (r) {
+              console.log('%cSUCCESS', consoleStyle['Success'])
+              console.log(r);
+              self.formList = r.data.value;
               
             })
-            .catch(function (error) {
+            .catch(function (e) {
               
-              console.log('%cERROR: Mounting data', onsoleStyle['Error'])
-              console.log(error);
+              console.log('%cERROR: Form Template List Pull', consoleStyle['Error'])
+              console.log(e);
             });
         }
   

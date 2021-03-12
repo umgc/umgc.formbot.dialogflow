@@ -3,6 +3,12 @@ Vue.component('forms', {
     list: Array,
     filterKey: String
   },
+  data: function(){
+    return{
+      docView: false,
+      docViererURLid:""
+    }
+  },
   computed: { 
     filteredForms: function () {
       var filterKey = this.filterKey && this.filterKey.toLowerCase();
@@ -29,6 +35,15 @@ Vue.component('forms', {
     },
     formURL(id){
       return "https://docs.google.com/document/d/" + id;
+    },
+    toggelDocViewer(id){
+      var self = this;
+      if(self.docView){
+        self.docView = false;
+      }else{
+        self.docView = true;
+        self.docViererURLid = id;
+      }
     }
   },
   filters: {
@@ -41,13 +56,20 @@ Vue.component('forms', {
    * - Add toggel to show and hide the iframe
    */
   template: `  
-  <article id="docs" class="list" style="float: left; width: 300px; height: 400px;">
-    <ul>
-      <li v-for="form in filteredForms">{{form.name}}
-      <div class="btn" @click="copyTextArea(formURL(form.id))">URL</div>
-        <iframe :src="formURL(form.id)"></iframe>
-      </li>
-    </ul>
+  <article class="list" style="">
+    <section class="view" v-if="!docView">
+      <ul>
+        <li v-for="form in filteredForms" class="cf doc">
+          <div class="title">{{form.name}}</div>
+          <div class="btn" @click="copyTextArea(toggelDocViewer(form.id))">View Doc</div> 
+          <div class="btn" @click="copyTextArea(formURL(form.id))">URL</div>        
+        </li>
+      </ul>
+    </section>
+    <section class="doc view" v-if="docView">
+      <div class="btn" @click="copyTextArea(toggelDocViewer(docViererURLid))">Back to List</div> 
+      <iframe :src="formURL(docViererURLid)"></iframe>
+    </section>
   </article>
       `
     })

@@ -2,6 +2,16 @@
 html{font-size: 16px;}
 body{font-size: 1.25rem;}
 
+
+/* 1.1 Clear Fix */
+.cf{overflow:auto;}
+.cf::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
 /* 2.0 Controls and links */
 .btn{ 
     background-color: #313030;
@@ -71,4 +81,32 @@ header.root{
 }
 #logo g path{
     fill: #fff;
+}
+
+#Docs{
+    float: left; 
+    width: 600px; 
+    margin-left: 20px;
+}
+#Docs .list{
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#Docs .view ul{ margin: 0; padding: 0px;}
+#Docs .list .btn{
+    float: right;
+    margin-left: 10px;
+}
+
+#Docs .doc{
+    margin: 0 0 10px 0;
+    padding: 5px;
+    width: 100%;
+    overflow: visible;
+}
+
+#Docs .doc .title{
+    width: 300px;
+    float: left;
 }

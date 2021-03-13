@@ -20,10 +20,47 @@ new Vue({
     },
     bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
     formTemplatesURL: "",
-    formList:[],
+    formList:[
+      {
+       "kind": "drive#file",
+       "id": "1OULF8VFt3Wd59o5_Bsh2rKsX745gsW9kWbuo2AieoSY",
+       "name": "BookingReference",
+       "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+       "kind": "drive#file",
+       "id": "1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY",
+       "name": "Formscribertest",
+       "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+       "kind": "drive#file",
+       "id": "1yQyeG1vwL3D5vfDZV3INv5syqNUWu_Xl26QyVbTUrSE",
+       "name": "Form-Formscribertest",
+       "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+       "kind": "drive#file",
+       "id": "10PEnb3CymcW8cuGVw8Z_9g14SMvYuuif7JL3mWRpVX0",
+       "name": "formscriber_test1",
+       "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+       "kind": "drive#file",
+       "id": "19rgMhDePgo-xt1idjLS2hBMNDfh_Jf20mD71XAHYf4o",
+       "name": "Copy of Copy of Formscribertest",
+       "mimeType": "application/vnd.google-apps.document"
+      },
+      {
+       "kind": "drive#file",
+       "id": "1mqnypBAm271pjsOlF4ac6YmCytZMABT1eT8nKGUNFFo",
+       "name": "COVID-19 Vaccination Record Card",
+       "mimeType": "application/vnd.google-apps.document"
+      }],
     FAQs:{},
     menuIndex:0,
     showMenu: true,
+    showMobileMenu: false,
     showFormTemplates: false,
     error:[]
   },
@@ -113,14 +150,36 @@ new Vue({
       },
       tab(id){
         this.menuIndex = id;
+        this.showMobileMenu = false;
       },
       togelMenu(){
-
+        var self = this;
+        if(self.showMobileMenu){ self.showMobileMenu = false;}
+        else{self.showMobileMenu = true;}
       },
       pullTemplateList(){
         var self = this;
         if(self.formTemplatesURL !== ""){
-          var URL = curentProtcol + "//" + curentHost + "/drive",
+ /*         var myHeaders = new Headers();
+          myHeaders.append("Authorization", "Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=");
+          myHeaders.append("Content-Type", "application/json");
+          myHeaders.append("Cookie", "__cfduid=dd3662af9543133b6ca6a9e371b32cd221615406325");
+          
+          var raw = JSON.stringify({"driveUrl":"https://drive.google.com/drive/u/2/folders/12Y_8hTAscpwq6p51bo0SxmTpoedJgrhh"});
+          var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+          };
+           
+          fetch("https://formscriber.com/drive", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));//*/
+
+
+ /*         var URL = "https://formscriber.com/drive", //curentProtcol + "//" + curentHost + "/drive",
             config = {
               headers: {
                 'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='
@@ -128,7 +187,7 @@ new Vue({
             },
             data = JSON.stringify({"driveUrl": self.formTemplatesURL});
         
-/*            axios.get(URL, data, config
+          axios.get(URL, data, config
              )
             .then(function (r) {
               console.log('**YAY**');
@@ -141,13 +200,13 @@ new Vue({
 
             });//*/
             
-            var self = this, 
+           var self = this, 
                 config = {
                 method: 'get',
-                url: curentProtcol + "//" + curentHost + '/drive',
+                url: "https://formscriber.com/drive", //curentProtcol + "//" + curentHost + '/drive',
                 headers: { 
-                  'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=', 
-                  'Content-Type': 'application/json'
+                  'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='//,
+  //                'Content-Type': 'application/json'
   //               'Cookie': '__cfduid=dd3662af9543133b6ca6a9e371b32cd221615406325'
                 },
                 data: JSON.stringify({"driveUrl": self.formTemplatesURL})
@@ -160,11 +219,12 @@ new Vue({
               self.formList = r.data.value;
               self.showFormTemplates = true;
             })
-            .catch(function (e) {
-              
+            .catch(function (e) {              
               console.log('%cERROR: Form Template List Pull', consoleStyle['Error'])
               console.log(e);
-            });
+            });//*/
+
+            self.showFormTemplates = true;
         }
   
   /*    var config = {

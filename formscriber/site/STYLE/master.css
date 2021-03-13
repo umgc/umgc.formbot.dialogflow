@@ -24,6 +24,11 @@ body{font-size: 1.25rem;}
     color: #313030;
 }
 
+#formLocation{
+    width: 400px;
+float: left;
+margin: 2px 20px 0 0;}
+
 /* 3.0 Tables */
 thead{background-color: #313030;}
 thead th{
@@ -36,8 +41,20 @@ tbody{border: 1px solid #ccc;}
 tbody tr:nth-child(even) {background: #ccc;}
 
 /* 4.0 Navagation */
-#mobileMenu i{color: #fff;}
+#mobileMenu i{
+    color: #fff;
+    margin-left: 45%;
+    font-size: 2rem;}
 
+nav.PC{
+    width: 620px;
+    margin: 0 auto;}
+
+nav.mobile .tab{
+    color: #fff;
+    font-size: 1.75rem;
+    border-top: 1px solid #fff;
+}
 /* 5.0 Layout */
 
 
@@ -65,7 +82,7 @@ article.helpArticle section.content{
 /* 5.1.1 App */
 #App iframe{
     width: calc(100vw - 20px);
-    max-width: 800px;
+    max-width: 600px;
     height: 430px;
 }
 

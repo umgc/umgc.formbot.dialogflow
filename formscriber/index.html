@@ -12,6 +12,7 @@
     <script src="site/JS/axios.min.js"></script>
     <!-- MOments is a light weight quic way of handling dates: https://momentjs.com/-->
     <script src="site/JS/moment-with-locales.min.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </head>
 <body>
   <main id="dashboard" class="app">
@@ -76,7 +77,14 @@
     <article id="App" v-if="menuIndex == 4">
       <header>App</header>
       <section class="content wrapper">
-          
+        
+        <df-messenger
+          intent="WELCOME"
+          chat-title="Form-Bot"
+          agent-id="1f8aea9e-26c0-47d3-b699-234257524470"
+          language-code="en"
+        ></df-messenger>
+          <h2>OLD</h2>
   
         <form-scriber
           :link="bot">

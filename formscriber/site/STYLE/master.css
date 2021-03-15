@@ -23,9 +23,11 @@ body{font-size: 1.25rem;}
     background-color: #fff;
     color: #313030;
 }
-
+.load.control{
+    margin-bottom: 20px;
+}
 #formLocation{
-    width: 400px;
+    width:calc(100% - 120px);
 float: left;
 margin: 2px 20px 0 0;}
 
@@ -102,9 +104,9 @@ header.root{
 
 #Docs{
     float: left; 
-    width: 600px; 
-    margin-left: 20px;
+    width: 100%; max-width: 600px; 
 }
+#Docs header.controls{margin-bottom: 20px;}
 #Docs .list{
     height: 400px;
     overflow-y: auto;

@@ -74,9 +74,22 @@
        3. Create a serach
       -->
     </article>
-    <article id="App" v-if="menuIndex == 4">
-      <header>App</header>
-      <section class="content wrapper">
+    <article id="Docs" v-if="menuIndex == 4">
+        <header class="controls">
+          <section class="cf load control">
+            <input id="formLocation" v-model="formTemplatesURL" class="form-control" placeholder="Input URL to Google Drive"/>
+            <div @click="pullTemplateList" class="btn">Submit</div>
+          </section>
+          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Tempaltes"/>          
+        </header>
+        <section>
+        <forms
+          v-if="showFormTemplates"
+          @openreportreader="openReportEditor($event)"
+          :list="formList"
+          :filter-key="filterKey.forms">
+        </forms>
+        
         
         <df-messenger
           intent="WELCOME"
@@ -84,27 +97,6 @@
           agent-id="1f8aea9e-26c0-47d3-b699-234257524470"
           language-code="en"
         ></df-messenger>
-          <h2>OLD</h2>
-  
-        <form-scriber
-          :link="bot">
-        </form-scriber>
-      </section>
-      <section id=Docs>
-        <header>
-          <section class="cf">
-          <input id="formLocation" v-model="formTemplatesURL" class="form-control" placeholder="Input URL to Google Drive"/>
-          <div @click="pullTemplateList" class="btn">Submit</div>
-        </section>
-          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Tempaltes"/>
-          
-        </header>
-        <forms
-          v-if="showFormTemplates"
-          @openreportreader="openReportEditor($event)"
-          :list="formList"
-          :filter-key="filterKey.forms">
-        </forms>
       </section>
     </article>
   </main>

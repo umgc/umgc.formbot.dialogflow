@@ -180,8 +180,8 @@ new Vue({
             
 
            var config = {
-                method: 'get',
-                url: "https://formscriber.com/drive", //curentProtcol + "//" + curentHost + '/drive',
+                method: 'post',
+                url: curentProtcol + "//" + curentHost + '/drive',
                 headers: { 
                   'Authorization': 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc='//,
   //                'Content-Type': 'application/json'

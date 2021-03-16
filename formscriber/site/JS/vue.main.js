@@ -20,43 +20,7 @@ new Vue({
     },
     bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
     formTemplatesURL: "",
-    formList:[
-      {
-       "kind": "drive#file",
-       "id": "1OULF8VFt3Wd59o5_Bsh2rKsX745gsW9kWbuo2AieoSY",
-       "name": "BookingReference",
-       "mimeType": "application/vnd.google-apps.document"
-      },
-      {
-       "kind": "drive#file",
-       "id": "1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY",
-       "name": "Formscribertest",
-       "mimeType": "application/vnd.google-apps.document"
-      },
-      {
-       "kind": "drive#file",
-       "id": "1yQyeG1vwL3D5vfDZV3INv5syqNUWu_Xl26QyVbTUrSE",
-       "name": "Form-Formscribertest",
-       "mimeType": "application/vnd.google-apps.document"
-      },
-      {
-       "kind": "drive#file",
-       "id": "10PEnb3CymcW8cuGVw8Z_9g14SMvYuuif7JL3mWRpVX0",
-       "name": "formscriber_test1",
-       "mimeType": "application/vnd.google-apps.document"
-      },
-      {
-       "kind": "drive#file",
-       "id": "19rgMhDePgo-xt1idjLS2hBMNDfh_Jf20mD71XAHYf4o",
-       "name": "Copy of Copy of Formscribertest",
-       "mimeType": "application/vnd.google-apps.document"
-      },
-      {
-       "kind": "drive#file",
-       "id": "1mqnypBAm271pjsOlF4ac6YmCytZMABT1eT8nKGUNFFo",
-       "name": "COVID-19 Vaccination Record Card",
-       "mimeType": "application/vnd.google-apps.document"
-      }],
+    formList:[],
     FAQs:{},
     menuIndex:0,
     showMenu: true,
@@ -159,6 +123,18 @@ new Vue({
       },
       pullTemplateList(){
         var self = this;
+   /*     var testD = "{\n\t\t\t\t\t\"kind\": \"drive#fileList\",\n\t\t\t\t\t\"incompleteSearch\": false,\n\t\t\t\t\t\"files\": [\n\t\t\t\t\t {\n\t\t\t\t\t  \"kind\": \"drive#file\",\n\t\t\t\t\t  \"id\": \"1F_0unyG-HHrOqRj1o-QfEQDxmkl_xw5xSo4dVLyqvPA\",\n\t\t\t\t\t  \"name\": \"Test Account\",\n\t\t\t\t\t  \"mimeType\": \"application/vnd.google-apps.document\"\n\t\t\t\t\t }\n\t\t\t\t\t]\n\t\t\t\t   }{\n\t\t\t\t\t\"kind\": \"drive#fileList\",\n\t\t\t\t\t\"incompleteSearch\": false,\n\t\t\t\t\t\"files\": [\n\t\t\t\t\t {\n\t\t\t\t\t  \"kind\": \"drive#file\",\n\t\t\t\t\t  \"id\": \"1F_0unyG-HHrOqRj1o-QfEQDxmkl_xw5xSo4dVLyqvPA\",\n\t\t\t\t\t  \"name\": \"Test Account\",\n\t\t\t\t\t  \"mimeType\": \"application/vnd.google-apps.document\"\n\t\t\t\t\t }\n\t\t\t\t\t]\n\t\t\t\t   }";
+
+        
+        cleanData = testD;
+        console.log(testD);
+        cleanData = cleanData.replace("\n","");
+        console.log(cleanData);
+        cleanData = cleanData.replace("\t","");
+        console.log(cleanData);
+        cleanData = JSON.parse(cleanData);
+        console.log(cleanData);//*/
+
         if(self.formTemplatesURL !== ""){
  /*         var myHeaders = new Headers();
           myHeaders.append("Authorization", "Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=");
@@ -200,8 +176,10 @@ new Vue({
 
             });//*/
             
-           var self = this, 
-                config = {
+
+            
+
+           var config = {
                 method: 'get',
                 url: "https://formscriber.com/drive", //curentProtcol + "//" + curentHost + '/drive',
                 headers: { 
@@ -214,9 +192,9 @@ new Vue({
              
             axios(config)
             .then(function (r) {
-              console.log('%cSUCCESS', consoleStyle['Success'])
-              console.log(r);
-              self.formList = r.data.value;
+              console.log('%cSUCCESS', consoleStyle['Success']);
+              console.log(r)
+              self.formList = r.data;
               self.showFormTemplates = true;
             })
             .catch(function (e) {              

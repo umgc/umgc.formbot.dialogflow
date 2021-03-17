@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/go
 
 trigger:
-- develop
+- master
 
 pool:
   vmImage: ubuntu-latest
@@ -28,12 +28,13 @@ steps:
     version: '1.15'
 
 - task: Go@0
-  displayName: 'Build'
+  displayName: 'Go Build'
   inputs:
     command: 'build'
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
 - task: Go@0
+  displayName: 'Go Unit Test'
   inputs:
     command: 'test'
     arguments: '-v'

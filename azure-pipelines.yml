@@ -42,4 +42,4 @@ steps:
   displayName: 'Npm Build'
   inputs:
     command: 'custom'
-    customCommand: 'run build'
+    customCommand: 'build'

@@ -22,6 +22,7 @@ new Vue({
     formTemplatesURL: "",
     formList:[],
     FAQs:{},
+    howToIndex:0,
     menuIndex:0,
     menuType:"PC",
     showMenu: true,
@@ -130,6 +131,7 @@ new Vue({
         this.menuIndex = id;
         this.showMobileMenu = false;
       },
+      howTo(i){this.howToIndex = i;},
       togelMenu(){
         var self = this;
         if(self.showMobileMenu){ self.showMobileMenu = false;}

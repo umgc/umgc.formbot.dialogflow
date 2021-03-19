@@ -3,15 +3,33 @@
     "d":[
         {
             "q":"Why is my List of Templates not Showing?",
-            "a":"answer"
+            "a":"answer",
+            "c":[]
         },
         {
             "q":"How do I start?",
-            "a":"<p>To start say 'Start Report', then copy the URL from your template to Form Scriber. Then Just say the name of the field tou want to input into and then the value you wish to enter.</p>"
+            "a":"<p>To start say 'Start Report', then copy the URL from your template to Form Scriber. Then Just say the name of the field tou want to input into and then the value you wish to enter.</p>",
+            "c":[]
         },
         {
             "q":"How do I conect templates?",
-            "a":"answer"
-        }
+            "a":"<ol><li>First, go to your google drive folder that has your templtes you want to fill out and add formbot@form-bot-1577a.iam.gserviceaccount.com as a editor </li><li>Next, copy the URL to your folder and psate it in the ",
+            "c":[]
+        },
+        {
+            "q":"Form Sciber says 'There are no fields to update. Please check your Document and return! Goodbye!' ",
+            "a":"answer",
+            "c":[]
+        },
+        {
+            "q":"How do I share my Drive link but keep it secure?",
+            "a":"<p>When you share ",
+            "c":[]
+        },
+        {
+            "q":"How do I print my form?",
+            "a":"At anytime, just say print. Form Scriber will give you a link to your completed form for you print.",
+            "c":[]
+        },
     ]
 }

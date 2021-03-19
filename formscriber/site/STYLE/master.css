@@ -1,6 +1,7 @@
 /* 1.0 General */
 html{font-size: 16px;}
-body{font-size: 1.25rem;}
+body{font-size: 1.25rem; 
+    overflow-x: hidden;}
 
 
 /* 1.1 Clear Fix */
@@ -155,4 +156,29 @@ div.nav.wrapper{
 #Docs .doc .title{
     width: 300px;
     float: left;
+}
+
+/* 7.0 How To */
+#howTo{
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 234px);
+    top: 234px; left: 0;
+    background-color: rgba(49, 48, 48, 0.75);
+    color: #fff;
+}
+#howTo section{ position: relative;}
+#s01{
+    width: 600px;
+    top: 20%;
+    left: 30%;
+}
+#s02{
+    top: 10px;
+    width: calc(100% - 12px);
+}
+#s03{
+    width: 600px;
+    left: 30%;
+    top: 10%;
 }

@@ -182,3 +182,23 @@ div.nav.wrapper{
     left: 30%;
     top: 10%;
 }
+
+/* 8.0 FAQs */
+#FAQs .FAQ{margin-top: 10px;}
+#FAQs .FAQ header.title{
+    width: 100%;
+    background-color: #4d4d4e;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+#FAQs .FAQ header.title:hover,
+#FAQs .FAQ header.title.active{
+    background-color:#989898;
+    color: #313030;
+}
+
+#FAQs .FAQ .info{
+    padding: 10px;
+    border: 1px solid #4d4d4e;
+}

@@ -61,7 +61,7 @@
       </table>
     </article>
     <article id="articles" class="panel" v-if="menuIndex == 2">
-      <header>Help Articles</header>      
+      <header><h2>Help Articles</h2></header>      
       <input v-model="filterKey.articles" onkeypress="return event.keyCode!=13" class="form-control" placeholder=" Input Search"/>
       <section class="list">
         <article class="helpArticle" v-for="a in filteredArticles">
@@ -70,12 +70,22 @@
         </article>
       </section>
     </article>
-    <article id="FAQ" class="panel" v-if="menuIndex == 3">
+    <article id="FAQs" class="panel" v-if="menuIndex == 3">
       <!-- TODO:
        1. ADD FAQ loop; filteredFAQs
        2. Create a v-if for each to show and hide answers (a) under questions (q)
        3. Create a serach
       -->
+      <header>
+        <h2>Frequently Asked Questions</h2>
+        <input v-model="filterKey.faqs" onkeypress="return event.keyCode!=13" class="form-control" placeholder="Search FAQ's"/>      
+      </header>
+      <section class="info howTo">
+        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)">
+            <header class="title">{{FAQ.q}}</header>
+            <section class="info" v-html="FAQ.a" v-if="FAQ.show"></section>
+        </article>
+      </section>
     </article>
     <article id="Docs" class="panel" v-if="menuIndex == 4">
         <header class="controls">

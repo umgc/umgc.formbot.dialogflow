@@ -31,5 +31,10 @@
             "a":"At anytime, just say print. Form Scriber will give you a link to your completed form for you print.",
             "c":[]
         },
+        {
+            "q":"How do I create a template",
+            "a":"Once you create a document, create a table. In a cell that you want Form Scriber to edit insert {{my-field-name}}, and replace 'my-field-name' witht he name of the field you want it to be. For Form Sciber to read the white spaces in your field title, makesure you replace them with '-'.",
+            "c":[]
+        }
     ]
 }

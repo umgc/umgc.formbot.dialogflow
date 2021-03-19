@@ -77,6 +77,18 @@ new Vue({
         }
         return data;
       },
+      filteredFAQs: function () {
+        var filterKey = this.filterKey.faqs && this.filterKey.faqs.toLowerCase();
+        var data = this.FAQs;
+        if (filterKey) {
+          data = data.filter(function (row) {
+            return Object.keys(row).some(function (key) {
+              return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+            })
+          })
+        }
+        return data;
+      },
       filteredArticles() {
 //  The following is a filter feature. it takes the filter key inputed into a serach box and filters ALL values in each key of a object
         var filterKey = this.filterKey.articles && this.filterKey.articles.toLowerCase();
@@ -132,6 +144,12 @@ new Vue({
         this.showMobileMenu = false;
       },
       howTo(i){this.howToIndex = i;},
+      togelFAQ(index){
+        this.FAQs.forEach(function(o, i){
+          if(i == index){ o.show = true;}
+          else{o.show = false;}
+        });
+      },
       togelMenu(){
         var self = this;
         if(self.showMobileMenu){ self.showMobileMenu = false;}

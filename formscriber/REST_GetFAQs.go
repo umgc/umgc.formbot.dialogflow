@@ -18,6 +18,7 @@ type FAQs struct {
 type FAQ struct {
 	Q string `json:"q"`
 	A string `json:"a"`
+	C string `json:"c"`
 }
 
 func GetFAQsEndPoint(w http.ResponseWriter, request *http.Request) {

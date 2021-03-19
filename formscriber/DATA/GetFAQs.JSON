@@ -4,12 +4,12 @@
         {
             "q":"Why is my List of Templates not Showing?",
             "a":"answer",
-            "c":[]
+            "c":"Trubleshoot"
         },
         {
             "q":"How do I start?",
             "a":"<p>To start say 'Start Report', then copy the URL from your template to Form Scriber. Then Just say the name of the field tou want to input into and then the value you wish to enter.</p>",
-            "c":[]
+            "c":"How to"
         },
         {
             "q":"How do I conect templates?",
@@ -18,8 +18,8 @@
         },
         {
             "q":"Form Sciber says 'There are no fields to update. Please check your Document and return! Goodbye!' ",
-            "a":"answer",
-            "c":[]
+            "a":"<p>In you template make sure the following is true</p><ul><li>that all form firlds are inside a table</li><li>Your form fields are wrapted in {{}}</li><li>There are now whate spaces within the {{}}.</li></ul>",
+            "c":"Trubleshoot"
         },
         {
             "q":"How do I share my Drive link but keep it secure?",

@@ -13,9 +13,7 @@ body{font-size: 1.25rem;}
 
 
 /* 2.0 Controls and links */
-.btn{ 
-    background-color: #313030;
-    border: 1px solid #313030;
+.btn{
     color:#fff;
     font-size: 1.25rem;
 }
@@ -27,10 +25,15 @@ body{font-size: 1.25rem;}
     margin-bottom: 20px;
 }
 #formLocation{
-    width:calc(100% - 120px);
+    width:calc(100% - 160px);
 float: left;
 margin: 2px 20px 0 0;}
 
+article.panel .btn{
+    background-color: #313030; 
+    border: 1px solid #313030;
+}
+article.panel .btn:hover{ background-color: #fff;}
 /* 3.0 Tables */
 thead{background-color: #313030;}
 thead th{
@@ -43,19 +46,26 @@ tbody{border: 1px solid #ccc;}
 tbody tr:nth-child(even) {background: #ccc;}
 
 /* 4.0 Navagation */
+
+#mobile{width: 100%; }
+#mobileMenu{width: 100%;padding: 10px 0 ;}
 #mobileMenu i{
     color: #fff;
     margin-left: 45%;
     font-size: 2rem;}
 
+
 nav.PC{
     width: 620px;
     margin: 0 auto;}
+
+nav.mobile{ width: 100%;}
 
 nav.mobile .tab{
     color: #fff;
     font-size: 1.75rem;
     border-top: 1px solid #fff;
+    padding-left: 10px;
 }
 /* 5.0 Layout */
 
@@ -89,13 +99,26 @@ article.helpArticle section.content{
 }
 
 /* 6.0 Branding */
-/* 6.1 Logo */
+
 header.root{
     background: #313030;
+    padding: 0px;
+}
+div.nav.wrapper{
+    width: 100%;
+    background: #20409a;
+    margin-top: 20px;
+}
+#PC.nav {
     padding: 10px;
 }
+
+/* 6.1 Logo */
+
 #logo{
-    margin-bottom: 20px;
+    padding:10px;
+    display: block;
+    margin: auto;
     max-height: 150px;
 }
 #logo g path{
@@ -104,13 +127,17 @@ header.root{
 
 #Docs{
     float: left; 
-    width: 100%; max-width: 600px; 
+    width: 100%; 
 }
 #Docs header.controls{margin-bottom: 20px;}
 #Docs .list{
     height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+#Docs iframe{
+    width: 100%;
+    height: 600px;
 }
 #Docs .view ul{ margin: 0; padding: 0px;}
 #Docs .list .btn{

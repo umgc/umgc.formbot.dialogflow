@@ -33,9 +33,13 @@ steps:
     command: 'build'
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
-- task: Go@0
-  displayName: 'Go Unit Test'
+- task: Npm@1
+  displayName: 'Install Dev-Tools'
   inputs:
-    command: 'test'
-    arguments: '-v'
-    workingDirectory: '$(modulePath)'
+    command: 'install'
+
+- task: Npm@1
+  displayName: 'JS Build'
+  inputs:
+    command: 'custom'
+    customCommand: 'build'

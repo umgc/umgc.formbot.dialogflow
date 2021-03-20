@@ -34,12 +34,12 @@ steps:
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
 - task: Npm@1
-  displayName: 'Install Npm'
+  displayName: 'Install Dev-Tools'
   inputs:
     command: 'install'
 
 - task: Npm@1
-  displayName: 'Npm Build'
+  displayName: 'JS Build'
   inputs:
     command: 'custom'
     customCommand: 'build'

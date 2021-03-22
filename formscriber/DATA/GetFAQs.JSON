@@ -13,28 +13,28 @@
         },
         {
             "q":"How do I conect templates?",
-            "a":"<ol><li>First, go to your google drive folder that has your templtes you want to fill out and add formbot@form-bot-1577a.iam.gserviceaccount.com as a editor </li><li>Next, copy the URL to your folder and psate it in the ",
-            "c":[]
+            "a":"<img src=\"site/IMG/addFSasEdiot.png\"/><ol><li>First, go to your google drive folder that has your templtes you want to fill out and add <b>formbot@form-bot-1577a.iam.gserviceaccount.com</b> as a editor </li><li>Next, copy the URL to your folder and psate it in the ",
+            "c":"How to"
         },
         {
-            "q":"Form Sciber says 'There are no fields to update. Please check your Document and return! Goodbye!' ",
+            "q":"Form Sciber says <em>'There are no fields to update. Please check your Document and return! Goodbye!'</em>",
             "a":"<p>In you template make sure the following is true</p><ul><li>that all form firlds are inside a table</li><li>Your form fields are wrapted in {{}}</li><li>There are now whate spaces within the {{}}.</li></ul>",
             "c":"Trubleshoot"
         },
         {
             "q":"How do I share my Drive link but keep it secure?",
             "a":"<p>When you share ",
-            "c":[]
+            "c":"How to"
         },
         {
             "q":"How do I print my form?",
             "a":"At anytime, just say print. Form Scriber will give you a link to your completed form for you print.",
-            "c":[]
+            "c":"How to"
         },
         {
             "q":"How do I create a template",
             "a":"Once you create a document, create a table. In a cell that you want Form Scriber to edit insert {{my-field-name}}, and replace 'my-field-name' witht he name of the field you want it to be. For Form Sciber to read the white spaces in your field title, makesure you replace them with '-'.",
-            "c":[]
+            "c":"How to"
         }
     ]
 }

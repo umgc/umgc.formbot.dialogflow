@@ -55,9 +55,8 @@ tbody tr:nth-child(even) {background: #ccc;}
     margin-left: 45%;
     font-size: 2rem;}
 
-
 nav.PC{
-    width: 620px;
+    width: 470px;
     margin: 0 auto;}
 
 nav.mobile{ width: 100%;}
@@ -133,8 +132,6 @@ div.nav.wrapper{
 #Docs header.controls{margin-bottom: 20px;}
 #Docs .list{
     height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 #Docs iframe{
     width: 100%;
@@ -157,6 +154,27 @@ div.nav.wrapper{
     width: 300px;
     float: left;
 }
+
+#Docs ul.forms,
+#Docs iframe.bot{ 
+    width: 48%; height: calc(100vh - 320px);
+    float: left;
+}
+#Docs ul.forms{
+    margin-left: 20px;
+    list-style: none;
+}
+#Docs ul.forms{ overflow-y: auto;}
+@media only screen and (min-width: 801px) and (max-width: 1040px){
+    #Docs ul.forms,
+    #Docs iframe.bot{ width: 48%;}
+}
+@media only screen and (max-width: 800px) {
+    #Docs ul.forms,
+    #Docs iframe.bot{ width: 100%;}
+    #Docs ul.forms{margin-left: 0px;}
+}
+
 
 /* 7.0 How To */
 #howTo{
@@ -184,6 +202,20 @@ div.nav.wrapper{
 }
 
 /* 8.0 FAQs */
+#FAQs .info{float: left;}
+#FAQs header.controls{width: 100%;}
+#FAQs section.info{width: 49%; margin-top: 20px;;}
+#FAQs .trubleshoot{margin-left: 20px;}
+
+@media only screen and (min-width: 801px) and (max-width: 1040px){
+    #FAQs section.info{ width: 48%;}
+}
+@media only screen and (max-width: 800px) {
+    #FAQs section.info{ width: 100%;}
+    #FAQs .trubleshoot{margin-left: 0px;}
+}
+
+/* 8.1 each FAQ */
 #FAQs .FAQ{margin-top: 10px;}
 #FAQs .FAQ header.title{
     width: 100%;
@@ -198,7 +230,12 @@ div.nav.wrapper{
     color: #313030;
 }
 
-#FAQs .FAQ .info{
+#FAQs .FAQ .content{
     padding: 10px;
     border: 1px solid #4d4d4e;
+}
+#FAQs .FAQ .content img{
+    width: 100%; height: auto;
+    margin-bottom: 10px;
+    text-align: center;
 }

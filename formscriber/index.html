@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="site/STYLE/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="site/STYLE/master.css">
+    <link rel="stylesheet" href="site/STYLE/theme.css">
     <!-- THis si the development version of vue, when we go live we will change this to the production -->
     <script src="site/JS/vue.js"></script>
     <script src="site/JS/axios.min.js"></script>
@@ -26,7 +27,7 @@
         <nav v-bind:class="{ mobile: isMobile(), PC: !isMobile()  }" v-if="!isMobile() || showMobileMenu">
           <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(0)">About</div>
           <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(1)">Meet the Team</div>
-          <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(2)">Help Articles</div>
+          <!--<div v-bind:class="{btn: !isMobile(), tab}" @click="tab(2)">Help Articles</div>-->
           <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(3)">FAQ's</div>
           <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(4)">From Scriber</div>
         </nav>
@@ -60,30 +61,23 @@
         </tbody>
       </table>
     </article>
-    <article id="articles" class="panel" v-if="menuIndex == 2">
-      <header><h2>Help Articles</h2></header>      
-      <input v-model="filterKey.articles" onkeypress="return event.keyCode!=13" class="form-control" placeholder=" Input Search"/>
-      <section class="list">
-        <article class="helpArticle" v-for="a in filteredArticles">
-          <header class="title">{{a.name}}</header>
-          <section class="content">{{a.description}}</section>
-        </article>
-      </section>
-    </article>
-    <article id="FAQs" class="panel" v-if="menuIndex == 3">
-      <!-- TODO:
-       1. ADD FAQ loop; filteredFAQs
-       2. Create a v-if for each to show and hide answers (a) under questions (q)
-       3. Create a serach
-      -->
-      <header>
+    <article id="FAQs" class="panel cf" v-if="menuIndex == 3">
+      <header class="info controls">
         <h2>Frequently Asked Questions</h2>
-        <input v-model="filterKey.faqs" onkeypress="return event.keyCode!=13" class="form-control" placeholder="Search FAQ's"/>      
+        <input v-model="filterKey.FAQs" onkeypress="return event.keyCode!=13" class="form-control" placeholder="Search FAQ's"/>      
       </header>
       <section class="info howTo">
-        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)">
-            <header class="title">{{FAQ.q}}</header>
-            <section class="info" v-html="FAQ.a" v-if="FAQ.show"></section>
+          <h3>How to</h3>
+          <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'How to'">
+              <header class="title" v-html="FAQ.q"></header>
+              <section class="content" v-html="FAQ.a" v-if="FAQ.show"></section>
+          </article>
+      </section>
+      <section class="info trubleshoot">
+        <h3>Trubleshoot</h3>
+        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'Trubleshoot'">
+            <header class="title" v-html="FAQ.q"></header>
+            <section class="content" v-html="FAQ.a" v-if="FAQ.show"></section>
         </article>
       </section>
     </article>
@@ -123,31 +117,28 @@
             </section>
           </article> 
           <article class="list">
-            <section class="view" v-if="!docView">
-              <ul>
-                <li v-for="form in filteredForms" class="cf doc">
+            <section class="view cf" v-if="!docView">              
+              <iframe
+                allow="microphone;"
+                class="bot"
+                :src="bot">
+              </iframe>
+              <ul class="forms">
+                <li v-for="form in filteredForms" class="cf form doc">
                   <div class="title">{{form.name}}</div>
-                  <div class="btn" @click="copyTextArea(toggelDocViewer(form.id))">View Doc</div> 
+                  <div class="btn" @click="toggelDocViewer(form.id)" v-if="!isMobile()">View Doc</div> 
                   <div class="btn" @click="copyTextArea(formURL(form.id))">URL</div>        
                 </li>
               </ul>
             </section>
             <section class="doc view" v-if="docView">
-              <div class="btn" @click="copyTextArea(toggelDocViewer(docViererURLid))">Back to List</div> 
+              <div class="btn" @click="toggelDocViewer(docViererURLid)">Back to List</div> 
               <iframe :src="formURL(docViererURLid)"></iframe>
             </section>
-          </article>    
-          <df-messenger
-            intent="WELCOME"
-            chat-title="Form-Bot"
-            agent-id="1f8aea9e-26c0-47d3-b699-234257524470"
-            language-code="en"
-          ></df-messenger>
+          </article>
       </section>
     </article>
   </main>
-  <script src="site/JS/componet.formScriber.js"></script>
-  <script src="site/JS/componet.forms.js"></script>
   <script src="site/JS/vue.main.js"></script>
 </body>
 </html>

@@ -35,9 +35,10 @@ steps:
 
 - task: Go@0
   inputs:
+  displayName: 'Go Test'
     command: 'test'
     arguments: '-v'
-    workingDirectory: '$(modulePath)'
+#    workingDirectory: '$(modulePath)'
 
 - task: Npm@1
   displayName: 'Install Dev-Tools'

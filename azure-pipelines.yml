@@ -33,6 +33,12 @@ steps:
     command: 'build'
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
+- task: Go@0
+  inputs:
+    command: 'test'
+    arguments: '-v'
+    workingDirectory: '$(modulePath)'
+
 - task: Npm@1
   displayName: 'Install Dev-Tools'
   inputs:

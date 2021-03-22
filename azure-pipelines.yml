@@ -33,11 +33,11 @@ steps:
     command: 'build'
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
-- task: Go@0
-  displayName: 'Go Test'
-  inputs:
-    command: 'test'
-    arguments: '-v'
+#- task: Go@0
+#  displayName: 'Go Test'
+#  inputs:
+#    command: 'test'
+#    arguments: '-v'
 #    workingDirectory: '$(modulePath)'
 
 - task: Npm@1

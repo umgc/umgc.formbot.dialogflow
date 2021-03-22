@@ -2,7 +2,7 @@
 html{font-size: 16px;}
 body{font-size: 1.25rem; 
     overflow-x: hidden;}
-
+[v-cloak]{display: none;}
 
 /* 1.1 Clear Fix */
 .cf{overflow:auto;}
@@ -159,41 +159,40 @@ div.nav.wrapper{
 #Docs iframe.bot{ 
     width: 48%; height: calc(100vh - 320px);
     float: left;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
 }
 #Docs ul.forms{
     margin-left: 20px;
     list-style: none;
 }
 #Docs ul.forms{ overflow-y: auto;}
-@media only screen and (min-width: 801px) and (max-width: 1040px){
-    #Docs ul.forms,
-    #Docs iframe.bot{ width: 48%;}
-}
-@media only screen and (max-width: 800px) {
-    #Docs ul.forms,
-    #Docs iframe.bot{ width: 100%;}
-    #Docs ul.forms{margin-left: 0px;}
-}
-
 
 /* 7.0 How To */
 #howTo{
-    position: absolute;
+    position: relative;
     width: 100vw;
-    height: calc(100vh - 234px);
-    top: 234px; left: 0;
-    background-color: rgba(49, 48, 48, 0.75);
+    height: calc(100vh - 160px);
+    top: -74px; left: -10px;
+    background-color: rgba(49, 48, 48, 0.85);
     color: #fff;
 }
+#howTo .btn{ border-color: #fff;}
 #howTo section{ position: relative;}
+#howTo img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
 #s01{
-    width: 600px;
-    top: 20%;
-    left: 30%;
+    width: 90%;
+    top: 10%;
+    left: 20px;
 }
 #s02{
     top: 10px;
-    width: calc(100% - 12px);
+    left: 10px;
+    width: calc(100% - 37px);
 }
 #s03{
     width: 600px;
@@ -207,13 +206,6 @@ div.nav.wrapper{
 #FAQs section.info{width: 49%; margin-top: 20px;;}
 #FAQs .trubleshoot{margin-left: 20px;}
 
-@media only screen and (min-width: 801px) and (max-width: 1040px){
-    #FAQs section.info{ width: 48%;}
-}
-@media only screen and (max-width: 800px) {
-    #FAQs section.info{ width: 100%;}
-    #FAQs .trubleshoot{margin-left: 0px;}
-}
 
 /* 8.1 each FAQ */
 #FAQs .FAQ{margin-top: 10px;}
@@ -228,6 +220,7 @@ div.nav.wrapper{
 #FAQs .FAQ header.title.active{
     background-color:#989898;
     color: #313030;
+    margin-bottom: 20px;
 }
 
 #FAQs .FAQ .content{
@@ -236,6 +229,5 @@ div.nav.wrapper{
 }
 #FAQs .FAQ .content img{
     width: 100%; height: auto;
-    margin-bottom: 10px;
     text-align: center;
 }

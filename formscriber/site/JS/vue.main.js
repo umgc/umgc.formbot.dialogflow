@@ -154,7 +154,7 @@ new Vue({
                 },
                 data: JSON.stringify({"driveUrl": self.formTemplatesURL})
             };
-             
+            /* 
             axios(config)
             .then(function (r) {
 //            console.log('%cSUCCESS', consoleStyle['Success']);
@@ -166,6 +166,8 @@ new Vue({
               console.log('%cERROR: Form Template List Pull', consoleStyle['Error']);
               console.log(e);
             });//*/
+
+            self.showFormTemplates = true;
         }
       }
     }

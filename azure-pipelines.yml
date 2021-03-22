@@ -34,8 +34,8 @@ steps:
     workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
 
 - task: Go@0
-  inputs:
   displayName: 'Go Test'
+  inputs:
     command: 'test'
     arguments: '-v'
 #    workingDirectory: '$(modulePath)'

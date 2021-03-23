@@ -96,7 +96,7 @@
           <article id="howTo" v-if="howToIndex > 0">
             <section id="s01" v-if="howToIndex == 1">
               <p>You will ne to first grant Form Scriber access to your Google Drive. go to your google drive folder that has your templtes you want to fill out and add formbot@form-bot-1577a.iam.gserviceaccount.com as a editor.</p>
-              <img src="site/IMG/addFSasEdiot.png"/>
+              <img src="site/IMG/addFSasEdiot.png" alt="addFSasEdiot.png"/>
               <p>Then copy the URL to that Drive folder.</p>
               <div class="btn" @click="howTo(2)">Next</div>
               <div class="btn" @click="howTo(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
@@ -111,7 +111,7 @@
             </section>
             <section id="s03"   v-if="howToIndex == 3">
               <p>Click on the URL button next to the form you wish to use. THis will copy a link to your form. Then, tell Form Scriber that you want "Start a new Report".</p>
-              <img src="site/IMG/usingFS.png" />
+              <img src="site/IMG/usingFS.png" alt="usingFS.png" />
               <p>Form Scriber will ask you for the URL to the form. Paste it and hit enter. Then just say the name of the field you wish to enter. At anytime you can cancel or print your form.</p>
               <div class="btn" @click="howTo(2)">Previous</div>
               <div class="btn" @click="howTo(0)">Finish</div>
@@ -120,10 +120,10 @@
           <article class="list">
             <section class="view cf" v-if="!docView">              
               <iframe
+                title="dialogflow-chat"
                 allow="microphone;"
                 class="bot"
-                :src="bot">
-              </iframe>
+                :src="bot"/>
               <div class="forms"><h2>List of Templtes</h2><ul>
                 <li v-for="form in filteredForms" class="cf form doc">
                   <div class="title">{{form.name}}</div>
@@ -134,7 +134,7 @@
             </section>
             <section class="doc view" v-if="docView">
               <div class="btn" @click="toggelDocViewer(docViererURLid)">Back to List</div> 
-              <iframe :src="formURL(docViererURLid)"></iframe>
+              <iframe :src="formURL(docViererURLid)" title="doc-viewer"/>
             </section>
           </article>
       </section>

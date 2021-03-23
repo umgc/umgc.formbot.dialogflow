@@ -21,20 +21,7 @@ new Vue({
     bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
     token: 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=',
     formTemplatesURL: "",
-    formList:[
-      {"kind":"drive#file","id":"1F_0unyG-HHrOqRj1o-QfEQDxmkl_xw5xSo4dVLyqvPA","name":"Test Account","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"12Y_8hTAscpwq6p51bo0SxmTpoedJgrhh","name":"test","mimeType":"application/vnd.google-apps.folder"},
-      {"kind":"drive#file","id":"1OHK-7YuKJ_8Jn4L_yIYEk2ffN9aqBoOu","name":"Form Scriber Templates","mimeType":"application/vnd.google-apps.folder"},{"kind":"drive#file","id":"1K0DyMe81abuLW-Lah261oTK-0LGH4KA0xFNwuILeUYg","name":"MyShippingForm","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1OULF8VFt3Wd59o5_Bsh2rKsX745gsW9kWbuo2AieoSY","name":"BookingReference","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1odgsVN8G7pJhux_8oUHHysO_nU7Fi73t74d3qCOl0uk","name":"Form Template Test","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1LJtz6CK_TA696h7j1oJwLyklpGDG9dTt","name":"Form Scriber","mimeType":"application/vnd.google-apps.folder"},{"kind":"drive#file","id":"1pA09fpfOnnKZRa55T0wOS6MkF94bWuMOzpzIrX3EKos","name":"My Mechanical Report","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1VRgtL2zcE2KTayqF28ttBlmtdI9nkJMyD9PzW4i0RlY","name":"Formscribertest","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1yQyeG1vwL3D5vfDZV3INv5syqNUWu_Xl26QyVbTUrSE","name":"Form-Formscribertest","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"10xgXvBStUz-apRc6gVTdXQGTOs510WLNhGZF1xF9zao","name":"test naming document","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"10PEnb3CymcW8cuGVw8Z_9g14SMvYuuif7JL3mWRpVX0","name":"formscriber_test1","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1AC0N2uT5jgM7rM9ucdCazvJVRJAq6kdrlfqHi7JAseY","name":"formbot@form-bot-1577a.iam.gserviceaccount.com","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"19rgMhDePgo-xt1idjLS2hBMNDfh_Jf20mD71XAHYf4o","name":"Copy of Copy of Formscribertest","mimeType":"application/vnd.google-apps.document"},
-      {"kind":"drive#file","id":"1mqnypBAm271pjsOlF4ac6YmCytZMABT1eT8nKGUNFFo","name":"COVID-19 Vaccination Record Card","mimeType":"application/vnd.google-apps.document"}],
+    formList:[],
     FAQs:{},
     howToIndex:0,
     menuIndex:0,
@@ -154,7 +141,7 @@ new Vue({
                 },
                 data: JSON.stringify({"driveUrl": self.formTemplatesURL})
             };
-            /* 
+            
             axios(config)
             .then(function (r) {
 //            console.log('%cSUCCESS', consoleStyle['Success']);
@@ -167,7 +154,7 @@ new Vue({
               console.log(e);
             });//*/
 
-            self.showFormTemplates = true;
+  //          self.showFormTemplates = true;
         }
       }
     }

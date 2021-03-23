@@ -90,7 +90,7 @@
             <div class="btn" title="How to Use" @click="howTo(1)"><i class="fa fa-info-circle" aria-hidden="true"></i>
             </div>
           </section>
-          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Tempaltes"/>          
+          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Templates"/>          
         </header>
         <section>
           <article id="howTo" v-if="howToIndex > 0">
@@ -117,14 +117,14 @@
               <div class="btn" @click="howTo(0)">Finish</div>
             </section>
           </article> 
-          <article class="list">
+          <article class="list" v-if="showFormTemplates">
             <section class="view cf" v-if="!docView">              
               <iframe
                 allow="microphone;"
                 class="bot"
                 :src="bot">
               </iframe>
-              <div class="forms"><h2>List of Templtes</h2><ul>
+              <div id="forms"><h2>List of Templates</h2><ul>
                 <li v-for="form in filteredForms" class="cf form doc">
                   <div class="title">{{form.name}}</div>
                   <div class="btn" @click="toggelDocViewer(form.id)" v-if="!isMobile()">View Doc</div> 

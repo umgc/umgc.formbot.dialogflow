@@ -155,18 +155,17 @@ div.nav.wrapper{
     float: left;
 }
 
-#Docs ul.forms,
+#Docs #forms,
 #Docs iframe.bot{ 
-    width: 48%; height: calc(100vh - 320px);
+    width: 48%; max-width: 400px; height: calc(100vh - 320px);
     float: left;
     margin-bottom: 10px;
     border: 1px solid #ccc;
 }
-#Docs ul.forms{
-    margin-left: 20px;
-    list-style: none;
+#Docs #forms{
+    margin-left: 20px;    
 }
-#Docs ul.forms{ overflow-y: auto;}
+#Docs #forms ul{ list-style: none; overflow-y: auto;}
 
 /* 7.0 How To */
 #howTo{

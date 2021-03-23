@@ -4,7 +4,7 @@ import (
 	"net/http"
 )
 
-type test_struct struct {
+type testStruct struct {
 	Name    string
 	Address string
 }

@@ -165,7 +165,10 @@ div.nav.wrapper{
 #Docs #forms{
     margin-left: 20px;    
 }
-#Docs #forms ul{ list-style: none; overflow-y: auto;}
+#Docs #forms ul{ 
+    list-style: none; 
+    overflow-y: auto;
+}
 
 /* 7.0 How To */
 #howTo{

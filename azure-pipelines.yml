@@ -1,0 +1,52 @@
+# Go
+# Build your Go project.
+# Add steps that test, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/go
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: CopyFiles@2
+  displayName: 'Copy Solution'
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish Artifacts"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+
+- task: GoTool@0
+  displayName: "Install Go Tools"
+  inputs:
+    version: '1.15'
+
+- task: Go@0
+  displayName: 'Go Build'
+  inputs:
+    command: 'build'
+    workingDirectory: '$(Build.ArtifactStagingDirectory)/formscriber'
+
+#- task: Go@0
+#  displayName: 'Go Test'
+#  inputs:
+#    command: 'test'
+#    arguments: '-v'
+#    workingDirectory: '$(modulePath)'
+
+- task: Npm@1
+  displayName: 'Install Dev-Tools'
+  inputs:
+    command: 'install'
+
+- task: Npm@1
+  displayName: 'JS Build'
+  inputs:
+    command: 'custom'
+    customCommand: 'build'

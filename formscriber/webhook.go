@@ -112,7 +112,7 @@ func basicAuth(h http.HandlerFunc) http.HandlerFunc {
 				fmt.Println(" ")
 				fmt.Println(" ")
 				//
-				http.ServeFile(w, r, "url_action_response.json")
+				http.ServeFile(w, r, "json/url_action_response.json")
 				// 2) If ACTION = Field intent, then take URL and make a POST request to the doc and update the field.
 				// parse out the intent/field name
 			} else if action.String() == "FillDocField" {
@@ -137,11 +137,11 @@ func basicAuth(h http.HandlerFunc) http.HandlerFunc {
 				//
 				//
 				//
-				http.ServeFile(w, r, "formfield_action_response.json")
+				http.ServeFile(w, r, "json/formfield_action_response.json")
 			} else {
 				fmt.Println("action not found")
 
-				http.ServeFile(w, r, "wildcard_response.json")
+				http.ServeFile(w, r, "json/wildcard_response.json")
 			}
 
 			if err != nil {

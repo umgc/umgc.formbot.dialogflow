@@ -73,6 +73,9 @@ nav.mobile .tab{
 /* 5.1 Panels */
 article.panel{
     padding: 10px;
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 /* 5.1.1 Help article */
@@ -126,7 +129,6 @@ div.nav.wrapper{
 }
 
 #Docs{
-    float: left; 
     width: 100%; 
 }
 #Docs header.controls{margin-bottom: 20px;}
@@ -151,19 +153,24 @@ div.nav.wrapper{
 }
 
 #Docs .doc .title{
-    width: 300px;
     float: left;
 }
 
 #Docs #forms,
 #Docs iframe.bot{ 
-    width: 48%; max-width: 400px; height: calc(100vh - 320px);
+    height: calc(100vh - 320px);
     float: left;
     margin-bottom: 10px;
     border: 1px solid #ccc;
 }
+
+#Docs iframe.bot{
+    width: 40%;
+    max-width: 400px; }
 #Docs #forms{
-    margin-left: 20px;    
+    margin-left: 20px; 
+    width: 58%;
+    max-width: 600px;  
 }
 #Docs #forms ul{ 
     list-style: none; 

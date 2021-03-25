@@ -136,9 +136,9 @@ adf-image-aks-deploy:
 	docker exec adfcontainer helm upgrade --install formscriberapi deploy/formscriberapi/ --namespace $(NAMESPACE)
 
 #Run Go "build" from docker container
-adf-go-build
+adf-go-build:
 	docker exec adfcontainer -w /usr/src/formscriber go build -v
 	
 #Run Go "test" from docker container
-adf-go-test
+adf-go-test:
 	docker exec adfcontainer -w /usr/src/formscriber go test

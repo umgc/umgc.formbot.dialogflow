@@ -55,7 +55,7 @@ adf-docker-pull:
 
 #Run the ADF docker container
 adf-docker-run:
-	docker run -t -d --name adfcontainer umgccaps/advance-development-factory-formbot-dialogflow
+	docker run -t -d -v $(PWD)/formscriber:/usr/src/formscriber --name adfcontainer umgccaps/advance-development-factory-formbot-dialogflow
 
 #Login to Azure using docker container
 adf-az-login:
@@ -135,5 +135,10 @@ adf-az-acr-build:
 adf-image-aks-deploy:
 	docker exec adfcontainer helm upgrade --install formscriberapi deploy/formscriberapi/ --namespace $(NAMESPACE)
 
-
+#Run Go "build" from docker container
+adf-go-build:
+	docker exec adfcontainer -w /usr/src/formscriber go build -v
 	
+#Run Go "test" from docker container
+adf-go-test:
+	docker exec adfcontainer -w /usr/src/formscriber go test

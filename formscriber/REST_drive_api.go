@@ -242,9 +242,8 @@ func driveAuth(h http.HandlerFunc) http.HandlerFunc {
 				fmt.Println("\nGet Drive Files complete!\n")
 				return
 
-				// Not sure what this line of code does but it is not being run...
-				// fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
-				// return
+				fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
+				return
 			}
 		default:
 			fmt.Println("\nUnhandled ERROR!\n")

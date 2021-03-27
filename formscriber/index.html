@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">    
+<head>
+    <meta name="google-site-verification" content="eFaHws1rQxCi2dHJjju-UtRwLoMvtOt80KKiimW48Ps" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Scriber Engine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="site/STYLE/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="site/STYLE/master.css">
+    <link rel="stylesheet" href="site/STYLE/theme.css">
+    <link rel="stylesheet" href="site/STYLE/mobile.css">
+    <!-- THis si the development version of vue, when we go live we will change this to the production -->
+    <script src="site/JS/vue.js"></script>
+    <script src="site/JS/axios.min.js"></script>
+    <!-- MOments is a light weight quic way of handling dates: https://momentjs.com/-->
+    <script src="site/JS/moment-with-locales.min.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+</head>
+<body>
+  <main id="dashboard" class="app" v-cloak>
+    <header class="root">
+      <svg data-v-423bf9ae="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 669.7607865358341 172" class="iconAbove" id="logo">
+      <g data-v-423bf9ae="" id="icon" transform="matrix(5.741626899055351,0,0,5.741626899055351,-10.27752361403293,93.47449072320306)"><path d="M8.22 4.19L2.27 4.19L2.27 8.67L7.59 8.67L7.59 9.09L2.27 9.09L2.27 13.55L1.79 13.55L1.79 3.75L8.22 3.75L8.22 4.19ZM13.12 13.59L13.12 13.59Q12.11 13.59 11.29 13.13L11.29 13.13L11.29 13.13Q10.47 12.66 10.01 11.82L10.01 11.82L10.01 11.82Q9.55 10.98 9.55 9.91L9.55 9.91L9.55 9.91Q9.55 8.85 10.01 8.01L10.01 8.01L10.01 8.01Q10.47 7.17 11.29 6.70L11.29 6.70L11.29 6.70Q12.11 6.23 13.12 6.23L13.12 6.23L13.12 6.23Q14.14 6.23 14.95 6.70L14.95 6.70L14.95 6.70Q15.76 7.17 16.23 8.01L16.23 8.01L16.23 8.01Q16.69 8.85 16.69 9.91L16.69 9.91L16.69 9.91Q16.69 10.98 16.23 11.82L16.23 11.82L16.23 11.82Q15.76 12.66 14.95 13.13L14.95 13.13L14.95 13.13Q14.14 13.59 13.12 13.59L13.12 13.59ZM13.12 13.17L13.12 13.17Q14 13.17 14.71 12.76L14.71 12.76L14.71 12.76Q15.41 12.35 15.82 11.61L15.82 11.61L15.82 11.61Q16.23 10.86 16.23 9.91L16.23 9.91L16.23 9.91Q16.23 8.96 15.82 8.22L15.82 8.22L15.82 8.22Q15.41 7.49 14.71 7.08L14.71 7.08L14.71 7.08Q14 6.66 13.12 6.66L13.12 6.66L13.12 6.66Q12.24 6.66 11.53 7.08L11.53 7.08L11.53 7.08Q10.82 7.49 10.42 8.22L10.42 8.22L10.42 8.22Q10.01 8.96 10.01 9.91L10.01 9.91L10.01 9.91Q10.01 10.86 10.42 11.61L10.42 11.61L10.42 11.61Q10.82 12.35 11.53 12.76L11.53 12.76L11.53 12.76Q12.24 13.17 13.12 13.17L13.12 13.17ZM19.42 8.04L19.42 8.04Q19.74 7.17 20.46 6.70L20.46 6.70L20.46 6.70Q21.18 6.23 22.25 6.23L22.25 6.23L22.25 6.69L22.12 6.69L22.12 6.69Q20.86 6.69 20.15 7.49L20.15 7.49L20.15 7.49Q19.43 8.29 19.43 9.69L19.43 9.69L19.43 13.55L18.97 13.55L18.97 6.29L19.42 6.29L19.42 8.04ZM33.45 6.23L33.45 6.23Q34.78 6.23 35.54 7.01L35.54 7.01L35.54 7.01Q36.30 7.80 36.30 9.28L36.30 9.28L36.30 13.55L35.84 13.55L35.84 9.31L35.84 9.31Q35.84 8.02 35.21 7.34L35.21 7.34L35.21 7.34Q34.58 6.66 33.42 6.66L33.42 6.66L33.42 6.66Q32.12 6.66 31.35 7.48L31.35 7.48L31.35 7.48Q30.58 8.29 30.58 9.63L30.58 9.63L30.58 13.55L30.11 13.55L30.11 9.31L30.11 9.31Q30.11 8.02 29.48 7.34L29.48 7.34L29.48 7.34Q28.85 6.66 27.71 6.66L27.71 6.66L27.71 6.66Q26.39 6.66 25.63 7.47L25.63 7.47L25.63 7.47Q24.86 8.27 24.86 9.63L24.86 9.63L24.86 13.55L24.40 13.55L24.40 6.29L24.85 6.29L24.85 8.04L24.85 8.04Q25.19 7.20 25.93 6.71L25.93 6.71L25.93 6.71Q26.68 6.23 27.73 6.23L27.73 6.23L27.73 6.23Q28.78 6.23 29.50 6.73L29.50 6.73L29.50 6.73Q30.21 7.24 30.45 8.20L30.45 8.20L30.45 8.20Q30.77 7.29 31.56 6.76L31.56 6.76L31.56 6.76Q32.34 6.23 33.45 6.23L33.45 6.23ZM42.04 13.61L42.04 13.61Q40.98 13.61 40.02 13.23L40.02 13.23L40.02 13.23Q39.06 12.85 38.54 12.25L38.54 12.25L38.79 11.91L38.79 11.91Q39.28 12.47 40.16 12.83L40.16 12.83L40.16 12.83Q41.03 13.19 42.03 13.19L42.03 13.19L42.03 13.19Q43.50 13.19 44.25 12.61L44.25 12.61L44.25 12.61Q45.00 12.03 45.00 11.12L45.00 11.12L45.00 11.12Q45.00 10.42 44.60 9.99L44.60 9.99L44.60 9.99Q44.21 9.56 43.64 9.34L43.64 9.34L43.64 9.34Q43.06 9.13 42.07 8.89L42.07 8.89L42.07 8.89Q41.01 8.62 40.36 8.37L40.36 8.37L40.36 8.37Q39.72 8.12 39.27 7.60L39.27 7.60L39.27 7.60Q38.82 7.08 38.82 6.22L38.82 6.22L38.82 6.22Q38.82 5.53 39.19 4.96L39.19 4.96L39.19 4.96Q39.55 4.38 40.30 4.04L40.30 4.04L40.30 4.04Q41.05 3.70 42.17 3.70L42.17 3.70L42.17 3.70Q42.97 3.70 43.74 3.93L43.74 3.93L43.74 3.93Q44.52 4.17 45.07 4.59L45.07 4.59L44.86 4.97L44.86 4.97Q44.28 4.55 43.57 4.33L43.57 4.33L43.57 4.33Q42.87 4.12 42.18 4.12L42.18 4.12L42.18 4.12Q40.75 4.12 40.02 4.71L40.02 4.71L40.02 4.71Q39.28 5.31 39.28 6.22L39.28 6.22L39.28 6.22Q39.28 6.93 39.68 7.36L39.68 7.36L39.68 7.36Q40.08 7.78 40.66 8.01L40.66 8.01L40.66 8.01Q41.24 8.23 42.22 8.47L42.22 8.47L42.22 8.47Q43.29 8.74 43.93 8.98L43.93 8.98L43.93 8.98Q44.58 9.23 45.02 9.74L45.02 9.74L45.02 9.74Q45.46 10.25 45.46 11.10L45.46 11.10L45.46 11.10Q45.46 11.79 45.09 12.36L45.09 12.36L45.09 12.36Q44.72 12.94 43.95 13.27L43.95 13.27L43.95 13.27Q43.18 13.61 42.04 13.61L42.04 13.61ZM50.57 13.59L50.57 13.59Q49.53 13.59 48.71 13.13L48.71 13.13L48.71 13.13Q47.89 12.66 47.42 11.82L47.42 11.82L47.42 11.82Q46.96 10.98 46.96 9.91L46.96 9.91L46.96 9.91Q46.96 8.85 47.42 8.01L47.42 8.01L47.42 8.01Q47.89 7.17 48.71 6.70L48.71 6.70L48.71 6.70Q49.53 6.23 50.57 6.23L50.57 6.23L50.57 6.23Q51.39 6.23 52.10 6.54L52.10 6.54L52.10 6.54Q52.81 6.86 53.26 7.48L53.26 7.48L52.91 7.77L52.91 7.77Q52.51 7.22 51.90 6.94L51.90 6.94L51.90 6.94Q51.30 6.66 50.57 6.66L50.57 6.66L50.57 6.66Q49.67 6.66 48.95 7.08L48.95 7.08L48.95 7.08Q48.23 7.49 47.82 8.22L47.82 8.22L47.82 8.22Q47.42 8.96 47.42 9.91L47.42 9.91L47.42 9.91Q47.42 10.86 47.82 11.61L47.82 11.61L47.82 11.61Q48.23 12.35 48.95 12.76L48.95 12.76L48.95 12.76Q49.67 13.17 50.57 13.17L50.57 13.17L50.57 13.17Q51.30 13.17 51.90 12.89L51.90 12.89L51.90 12.89Q52.51 12.61 52.91 12.07L52.91 12.07L53.26 12.35L53.26 12.35Q52.81 12.96 52.10 13.28L52.10 13.28L52.10 13.28Q51.39 13.59 50.57 13.59L50.57 13.59ZM55.92 8.04L55.92 8.04Q56.24 7.17 56.96 6.70L56.96 6.70L56.96 6.70Q57.68 6.23 58.74 6.23L58.74 6.23L58.74 6.69L58.62 6.69L58.62 6.69Q57.36 6.69 56.64 7.49L56.64 7.49L56.64 7.49Q55.93 8.29 55.93 9.69L55.93 9.69L55.93 13.55L55.47 13.55L55.47 6.29L55.92 6.29L55.92 8.04ZM60.90 13.55L60.90 6.29L61.36 6.29L61.36 13.55L60.90 13.55ZM61.12 4.38L61.12 4.38Q60.94 4.38 60.80 4.25L60.80 4.25L60.80 4.25Q60.66 4.12 60.66 3.93L60.66 3.93L60.66 3.93Q60.66 3.74 60.79 3.60L60.79 3.60L60.79 3.60Q60.93 3.47 61.12 3.47L61.12 3.47L61.12 3.47Q61.31 3.47 61.45 3.60L61.45 3.60L61.45 3.60Q61.59 3.74 61.59 3.92L61.59 3.92L61.59 3.92Q61.59 4.10 61.45 4.24L61.45 4.24L61.45 4.24Q61.31 4.38 61.12 4.38L61.12 4.38ZM68.05 6.23L68.05 6.23Q69.05 6.23 69.86 6.70L69.86 6.70L69.86 6.70Q70.67 7.17 71.14 8.01L71.14 8.01L71.14 8.01Q71.61 8.85 71.61 9.91L71.61 9.91L71.61 9.91Q71.61 10.98 71.14 11.82L71.14 11.82L71.14 11.82Q70.67 12.66 69.86 13.13L69.86 13.13L69.86 13.13Q69.05 13.59 68.05 13.59L68.05 13.59L68.05 13.59Q66.99 13.59 66.16 13.05L66.16 13.05L66.16 13.05Q65.32 12.52 64.92 11.56L64.92 11.56L64.92 13.55L64.47 13.55L64.47 3.16L64.93 3.16L64.93 8.23L64.93 8.23Q65.34 7.29 66.17 6.76L66.17 6.76L66.17 6.76Q67.00 6.23 68.05 6.23L68.05 6.23ZM68.04 13.17L68.04 13.17Q68.92 13.17 69.63 12.76L69.63 12.76L69.63 12.76Q70.34 12.35 70.74 11.61L70.74 11.61L70.74 11.61Q71.15 10.86 71.15 9.91L71.15 9.91L71.15 9.91Q71.15 8.96 70.74 8.22L70.74 8.22L70.74 8.22Q70.34 7.49 69.63 7.08L69.63 7.08L69.63 7.08Q68.92 6.66 68.04 6.66L68.04 6.66L68.04 6.66Q67.16 6.66 66.45 7.08L66.45 7.08L66.45 7.08Q65.74 7.49 65.34 8.22L65.34 8.22L65.34 8.22Q64.93 8.96 64.93 9.91L64.93 9.91L64.93 9.91Q64.93 10.86 65.34 11.61L65.34 11.61L65.34 11.61Q65.74 12.35 66.45 12.76L66.45 12.76L66.45 12.76Q67.16 13.17 68.04 13.17L68.04 13.17ZM79.88 9.86L79.88 9.98L73.51 9.98L73.51 9.98Q73.53 10.91 73.95 11.63L73.95 11.63L73.95 11.63Q74.37 12.36 75.10 12.77L75.10 12.77L75.10 12.77Q75.84 13.17 76.75 13.17L76.75 13.17L76.75 13.17Q77.49 13.17 78.12 12.90L78.12 12.90L78.12 12.90Q78.75 12.63 79.16 12.10L79.16 12.10L79.45 12.40L79.45 12.40Q78.96 12.98 78.26 13.29L78.26 13.29L78.26 13.29Q77.56 13.59 76.75 13.59L76.75 13.59L76.75 13.59Q75.68 13.59 74.85 13.13L74.85 13.13L74.85 13.13Q74.02 12.66 73.54 11.82L73.54 11.82L73.54 11.82Q73.07 10.98 73.07 9.91L73.07 9.91L73.07 9.91Q73.07 8.85 73.51 8.01L73.51 8.01L73.51 8.01Q73.95 7.17 74.73 6.70L74.73 6.70L74.73 6.70Q75.52 6.23 76.48 6.23L76.48 6.23L76.48 6.23Q77.43 6.23 78.21 6.69L78.21 6.69L78.21 6.69Q78.99 7.15 79.44 7.98L79.44 7.98L79.44 7.98Q79.88 8.81 79.88 9.86L79.88 9.86ZM76.48 6.65L76.48 6.65Q75.67 6.65 75.01 7.03L75.01 7.03L75.01 7.03Q74.35 7.41 73.96 8.08L73.96 8.08L73.96 8.08Q73.57 8.76 73.53 9.60L73.53 9.60L79.45 9.60L79.45 9.60Q79.39 8.76 78.99 8.08L78.99 8.08L78.99 8.08Q78.60 7.41 77.94 7.03L77.94 7.03L77.94 7.03Q77.29 6.65 76.48 6.65L76.48 6.65ZM82.61 8.04L82.61 8.04Q82.94 7.17 83.66 6.70L83.66 6.70L83.66 6.70Q84.38 6.23 85.44 6.23L85.44 6.23L85.44 6.69L85.32 6.69L85.32 6.69Q84.06 6.69 83.34 7.49L83.34 7.49L83.34 7.49Q82.63 8.29 82.63 9.69L82.63 9.69L82.63 13.55L82.17 13.55L82.17 6.29L82.61 6.29L82.61 8.04ZM87.37 13.59L87.37 13.59Q87.18 13.59 87.05 13.46L87.05 13.46L87.05 13.46Q86.91 13.33 86.91 13.13L86.91 13.13L86.91 13.13Q86.91 12.94 87.05 12.80L87.05 12.80L87.05 12.80Q87.19 12.67 87.37 12.67L87.37 12.67L87.37 12.67Q87.57 12.67 87.70 12.80L87.70 12.80L87.70 12.80Q87.84 12.94 87.84 13.13L87.84 13.13L87.84 13.13Q87.84 13.33 87.70 13.46L87.70 13.46L87.70 13.46Q87.57 13.59 87.37 13.59L87.37 13.59ZM93.04 13.59L93.04 13.59Q92.01 13.59 91.19 13.13L91.19 13.13L91.19 13.13Q90.37 12.66 89.90 11.82L89.90 11.82L89.90 11.82Q89.43 10.98 89.43 9.91L89.43 9.91L89.43 9.91Q89.43 8.85 89.90 8.01L89.90 8.01L89.90 8.01Q90.37 7.17 91.19 6.70L91.19 6.70L91.19 6.70Q92.01 6.23 93.04 6.23L93.04 6.23L93.04 6.23Q93.87 6.23 94.58 6.54L94.58 6.54L94.58 6.54Q95.28 6.86 95.73 7.48L95.73 7.48L95.38 7.77L95.38 7.77Q94.99 7.22 94.38 6.94L94.38 6.94L94.38 6.94Q93.77 6.66 93.04 6.66L93.04 6.66L93.04 6.66Q92.15 6.66 91.43 7.08L91.43 7.08L91.43 7.08Q90.71 7.49 90.30 8.22L90.30 8.22L90.30 8.22Q89.89 8.96 89.89 9.91L89.89 9.91L89.89 9.91Q89.89 10.86 90.30 11.61L90.30 11.61L90.30 11.61Q90.71 12.35 91.43 12.76L91.43 12.76L91.43 12.76Q92.15 13.17 93.04 13.17L93.04 13.17L93.04 13.17Q93.77 13.17 94.38 12.89L94.38 12.89L94.38 12.89Q94.99 12.61 95.38 12.07L95.38 12.07L95.73 12.35L95.73 12.35Q95.28 12.96 94.58 13.28L94.58 13.28L94.58 13.28Q93.87 13.59 93.04 13.59L93.04 13.59ZM100.69 13.59L100.69 13.59Q99.68 13.59 98.86 13.13L98.86 13.13L98.86 13.13Q98.04 12.66 97.58 11.82L97.58 11.82L97.58 11.82Q97.12 10.98 97.12 9.91L97.12 9.91L97.12 9.91Q97.12 8.85 97.58 8.01L97.58 8.01L97.58 8.01Q98.04 7.17 98.86 6.70L98.86 6.70L98.86 6.70Q99.68 6.23 100.69 6.23L100.69 6.23L100.69 6.23Q101.71 6.23 102.52 6.70L102.52 6.70L102.52 6.70Q103.33 7.17 103.80 8.01L103.80 8.01L103.80 8.01Q104.26 8.85 104.26 9.91L104.26 9.91L104.26 9.91Q104.26 10.98 103.80 11.82L103.80 11.82L103.80 11.82Q103.33 12.66 102.52 13.13L102.52 13.13L102.52 13.13Q101.71 13.59 100.69 13.59L100.69 13.59ZM100.69 13.17L100.69 13.17Q101.57 13.17 102.28 12.76L102.28 12.76L102.28 12.76Q102.98 12.35 103.39 11.61L103.39 11.61L103.39 11.61Q103.80 10.86 103.80 9.91L103.80 9.91L103.80 9.91Q103.80 8.96 103.39 8.22L103.39 8.22L103.39 8.22Q102.98 7.49 102.28 7.08L102.28 7.08L102.28 7.08Q101.57 6.66 100.69 6.66L100.69 6.66L100.69 6.66Q99.81 6.66 99.10 7.08L99.10 7.08L99.10 7.08Q98.39 7.49 97.99 8.22L97.99 8.22L97.99 8.22Q97.58 8.96 97.58 9.91L97.58 9.91L97.58 9.91Q97.58 10.86 97.99 11.61L97.99 11.61L97.99 11.61Q98.39 12.35 99.10 12.76L99.10 12.76L99.10 12.76Q99.81 13.17 100.69 13.17L100.69 13.17ZM115.58 6.23L115.58 6.23Q116.91 6.23 117.68 7.01L117.68 7.01L117.68 7.01Q118.44 7.80 118.44 9.28L118.44 9.28L118.44 13.55L117.98 13.55L117.98 9.31L117.98 9.31Q117.98 8.02 117.35 7.34L117.35 7.34L117.35 7.34Q116.72 6.66 115.56 6.66L115.56 6.66L115.56 6.66Q114.25 6.66 113.48 7.48L113.48 7.48L113.48 7.48Q112.71 8.29 112.71 9.63L112.71 9.63L112.71 13.55L112.25 13.55L112.25 9.31L112.25 9.31Q112.25 8.02 111.62 7.34L111.62 7.34L111.62 7.34Q110.99 6.66 109.84 6.66L109.84 6.66L109.84 6.66Q108.53 6.66 107.76 7.47L107.76 7.47L107.76 7.47Q107.00 8.27 107.00 9.63L107.00 9.63L107.00 13.55L106.54 13.55L106.54 6.29L106.99 6.29L106.99 8.04L106.99 8.04Q107.32 7.20 108.07 6.71L108.07 6.71L108.07 6.71Q108.82 6.23 109.87 6.23L109.87 6.23L109.87 6.23Q110.92 6.23 111.64 6.73L111.64 6.73L111.64 6.73Q112.35 7.24 112.59 8.20L112.59 8.20L112.59 8.20Q112.91 7.29 113.69 6.76L113.69 6.76L113.69 6.76Q114.48 6.23 115.58 6.23L115.58 6.23Z"></path></g>
+      <g data-v-423bf9ae="" id="txt" transform="matrix(1.0467836168077258,0,0,1.0467836168077258,283.22552653088485,-2.444221965095906)" stroke="none"><path d="M50 2.89a36.23 36.23 0 0 0-36.19 36.18v.21a9 9 0 0 0-8.24 9v11a9 9 0 0 0 9 9h6.31a29.11 29.11 0 0 0 54.47 14h4.09a9 9 0 0 0 9-9v-5.55a9 9 0 0 0 6-8.47v-11a9 9 0 0 0-8.24-9v-.21A36.23 36.23 0 0 0 50 2.89zm0 2a34.23 34.23 0 0 1 34.19 34.18v.17h-2.81A33.4 33.4 0 0 0 73 25.19c-6.1-6-14.26-9.1-23.69-8.93a33 33 0 0 0-30.6 23h-2.9v-.17A34.23 34.23 0 0 1 50 4.89zm29 51.65A11.35 11.35 0 0 0 74 49L50.55 33.67a1 1 0 0 0-1.09 0L26 49a11.34 11.34 0 0 0-4.52 5.79h-.65v1.62a5.75 5.75 0 0 1-1.75-4.14v-2.91c0-16.87 13.56-30.82 30.22-31.1 8.86-.15 16.55 2.74 22.25 8.36a32.12 32.12 0 0 1 9.26 22.51v3.11a5.76 5.76 0 0 1-1.81 4.3zM7.57 59.26v-11a7 7 0 0 1 6.24-7h2v-.08h2.33a33.08 33.08 0 0 0-1 8.12v2.87a7.76 7.76 0 0 0 2.92 6.08l.82.66v7.28h-6.31a7 7 0 0 1-7-6.93zM50 95.11A27.15 27.15 0 0 1 22.88 68v-9.5a9.36 9.36 0 0 1 4.25-7.86L50 35.7l22.86 14.93a9.36 9.36 0 0 1 4.25 7.86V68a26.94 26.94 0 0 1-3 12.29H60.86a7.21 7.21 0 0 0-7.19-6.78H50a7.21 7.21 0 0 0 0 14.43h3.68a7.22 7.22 0 0 0 7-5.65H73a27.12 27.12 0 0 1-23 12.82zm8.89-14.39a5.22 5.22 0 0 1-5.21 5.21H50a5.21 5.21 0 0 1 0-10.43h3.68a5.22 5.22 0 0 1 5.21 5.22zm27.56-7.44a7 7 0 0 1-7 7h-3.06a28.93 28.93 0 0 0 2.72-12h6.31a9 9 0 0 0 1-.06zm6-25v11a7 7 0 0 1-7 7h-6.33V59l.82-.66a7.75 7.75 0 0 0 2.92-6.08v-3.13a33.8 33.8 0 0 0-1-7.88h2.27v.08h2a7 7 0 0 1 6.3 6.91z"></path></g></svg>
+      <div v-bind:id="menuType" class="nav wrapper">
+        <div id="mobileMenu" v-if="isMobile() && !showMobileMenu" @click="togelMenu()">
+          <i class="fa fa-bars" aria-hidden="true"></i></div>
+        <nav v-bind:class="{ mobile: isMobile(), PC: !isMobile()  }" v-if="!isMobile() || showMobileMenu">
+          <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(0)">About</div>
+          <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(1)">Meet the Team</div>
+          <!--<div v-bind:class="{btn: !isMobile(), tab}" @click="tab(2)">Help Articles</div>-->
+          <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(3)">FAQ's</div>
+          <div v-bind:class="{btn: !isMobile(), tab}" @click="tab(4)">Form Scriber</div>
+        </nav>
+      </div>
+    </header>
+    <article id="home" class="panel" v-if="menuIndex == 0">
+      <p>Welcome to Form Bot. </p>
+      <p>Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports.</p>
+      <p>Form scriber was developed by Team Dialogflow of University of Maryland Global Campus' Masters IT Software Engineering Capstone course.</p>
+      <p>
+        <a href="https://docs.google.com/document/d/1yW5pGxqwNWkhrDbq4ykZ4b07P42PdQJfzlVGfUBPLq0/edit?usp=sharing">Privacy Policy</a><br/>
+        <a href="https://docs.google.com/document/d/1NoJaVAYKRDnF-3Yy6AKxeZWuVI-rTEJQ9P8UO5lDVcE/edit?usp=sharing">Terms of Service</a>
+      </p>
+    </article>
+    <article id="team" class="panel" v-if="menuIndex == 1">
+      <h2>Team Dialogflow:</h2>
+      <table>
+        <thead><tr>
+          <th class="role">Role</th>
+          <th class="name">Name</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="m in teamRoster">
+            <td>{{m.role}}</td>
+            <td>{{m.lname}}, {{m.fname}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <article id="FAQs" class="panel cf" v-if="menuIndex == 3">
+      <header class="info controls">
+        <h2>Frequently Asked Questions</h2>
+        <input v-model="filterKey.FAQs" onkeypress="return event.keyCode!=13" class="form-control" placeholder="Search FAQ's"/>      
+      </header>
+      <section class="info howTo">
+          <h3>How to</h3>
+          <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'How to'">
+              <header class="title" v-html="FAQ.q"></header>
+              <section class="content" v-html="FAQ.a" v-if="FAQ.show"></section>
+          </article>
+      </section>
+      <section class="info trubleshoot">
+        <h3>Trubleshoot</h3>
+        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'Trubleshoot'">
+            <header class="title" v-html="FAQ.q"></header>
+            <section class="content" v-html="FAQ.a" v-if="FAQ.show"></section>
+        </article>
+      </section>
+    </article>
+    <article id="Docs" class="panel" v-if="menuIndex == 4">
+        <header class="controls">
+          <section class="cf load control">
+            <input id="formLocation" v-model="formTemplatesURL" class="form-control" placeholder="Input URL to Google Drive"/>
+            <div @click="pullTemplateList" class="btn">Submit</div>
+            <div class="btn" title="How to Use" @click="howTo(1)"><i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
+          </section>
+          <input v-model="filterKey.forms" onkeypress="return event.keyCode!=13" v-if="showFormTemplates" class="form-control" placeholder="Search Form Templates"/>          
+        </header>
+        <section>
+          <article id="howTo" v-if="howToIndex > 0">
+            <section id="s01" v-if="howToIndex == 1">
+              <p>You will ne to first grant Form Scriber access to your Google Drive. go to your google drive folder that has your templtes you want to fill out and add formbot@form-bot-1577a.iam.gserviceaccount.com as a editor.</p>
+              <img src="site/IMG/addFSasEdiot.png"/>
+              <p>Then copy the URL to that Drive folder.</p>
+              <div class="btn" @click="howTo(2)">Next</div>
+              <div class="btn" @click="howTo(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+            </section>
+            <section id="s02"  v-if="howToIndex == 2">              
+              <input id="formLocation" v-model="formTemplatesURL" class="form-control" placeholder="Input URL to Google Drive"/>
+              <div @click="pullTemplateList" class="btn">Submit</div>
+              <p>Paste the URL to your Drive folder in the into field above then click on the Submit button.</p>
+              <div class="btn" @click="howTo(1)">Previous</div>
+              <div class="btn" @click="howTo(3)">Next</div>
+              <div class="btn" @click="howTo(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+            </section>
+            <section id="s03"   v-if="howToIndex == 3">
+              <p>Click on the URL button next to the form you wish to use. THis will copy a link to your form. Then, tell Form Scriber that you want "Start a new Report".</p>
+              <img src="site/IMG/usingFS.png" />
+              <p>Form Scriber will ask you for the URL to the form. Paste it and hit enter. Then just say the name of the field you wish to enter. At anytime you can cancel or print your form.</p>
+              <div class="btn" @click="howTo(2)">Previous</div>
+              <div class="btn" @click="howTo(0)">Finish</div>
+            </section>
+          </article> 
+          <article class="list" v-if="showFormTemplates">
+            <section class="view cf" v-if="!docView">              
+              <iframe
+                allow="microphone;"
+                class="bot"
+                :src="bot">
+              </iframe>
+              <div id="forms"><h2>List of Templates</h2><ul>
+                <p style="color: green; font-size: 1rem;" v-if="msg !== ''" v-html="msg"></p>
+                <li v-for="form in filteredForms" class="cf form doc">
+                  <div class="title">{{form.name}}</div>
+                  <div class="btn" @click="toggelDocViewer(form.id)" v-if="!isMobile()">View Doc</div> 
+                  <div class="btn" @click="copyTextArea(form.name,formURL(form.id))">URL</div>        
+                </li>
+              </ul></div>
+            </section>
+            <section class="doc view" v-if="docView">
+              <div class="btn" @click="toggelDocViewer(docViererURLid)">Back to List</div> 
+              <iframe :src="formURL(docViererURLid)"></iframe>
+            </section>
+          </article>
+      </section>
+    </article>
+  </main>
+  <script src="site/JS/vue.main.js"></script>
+</body>
+</html>

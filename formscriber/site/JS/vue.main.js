@@ -18,6 +18,7 @@ new Vue({
       FAQs:"",
       forms:""
     },
+    msg:"",
     bot:"https://console.dialogflow.com/api-client/demo/embedded/1f8aea9e-26c0-47d3-b699-234257524470",
     token: 'Basic Zm9ybXNjcmliZXJhcGk1MjM0NTo5ODcyMzQ4OTcydXNoZGZ1U0RGwqckwqc=',
     formTemplatesURL: "",
@@ -118,7 +119,10 @@ new Vue({
         if(self.showMobileMenu){ self.showMobileMenu = false;}
         else{self.showMobileMenu = true;}
       },
-      copyTextArea(txt) { navigator.clipboard.writeText(txt);},
+      copyTextArea(fileName, url) { 
+        navigator.clipboard.writeText(url);
+        this.msg = '<em>"' + fileName + '"</em> has been copied."';
+      },
       formURL(id){ return "https://docs.google.com/document/d/" + id;},
       toggelDocViewer(id){
         var self = this;

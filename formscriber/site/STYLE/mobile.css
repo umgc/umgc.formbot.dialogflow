@@ -1,13 +1,13 @@
 
 @media only screen and (min-width: 801px) and (max-width: 1040px){
-    #Docs ul.forms,
+    #Docs #forms,
     #Docs iframe.bot{ width: 48%;}
     #FAQs section.info{ width: 48%;}
 }
 @media only screen and (max-width: 800px) {
-    #Docs ul.forms,
+    #Docs #forms,
     #Docs iframe.bot{ width: 100%; height: 450px;}
-    #Docs ul.forms{margin-left: 0px;}
+    #Docs #forms{margin-left: 0px;}
     #FAQs section.info{ width: 100%;}
     #FAQs .trubleshoot{margin-left: 0px;}
     #s01{left: 5px;}

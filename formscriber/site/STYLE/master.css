@@ -158,7 +158,7 @@ div.nav.wrapper{
 
 #Docs #forms,
 #Docs iframe.bot{ 
-    height: calc(100vh - 320px);
+    height: calc(100vh - 410px);
     float: left;
     margin-bottom: 10px;
     border: 1px solid #ccc;

@@ -4,7 +4,7 @@
         {
             "q":"Why is my List of Templates not Showing?",
             "a":"answer",
-            "c":"Trubleshoot"
+            "c":"Troubleshoot"
         },
         {
             "q":"How do I start?",
@@ -19,7 +19,7 @@
         {
             "q":"Form Scriber says <em>'There are no fields to update. Please check your Document and return! Goodbye!'</em>",
             "a":"<p>In you template make sure the following is true</p><ul><li>that all form fields are inside a table</li><li>Your form fields are wrapted in {{}}</li><li>There are now whate spaces within the {{}}.</li></ul>",
-            "c":"Trubleshoot"
+            "c":"Troubleshoot"
         },
         {
             "q":"How do I print my form?",

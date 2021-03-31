@@ -104,6 +104,10 @@ new Vue({
         return check;
       },
       tab(id){
+        this.msg = "";
+        this.formTemplatesURL = "";
+        this.showFormTemplates = false;
+        this.formList.length = 0;
         this.menuIndex = id;
         this.showMobileMenu = false;
       },

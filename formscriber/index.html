@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="site/STYLE/theme.css">
     <link rel="stylesheet" href="site/STYLE/mobile.css">
     <!-- THis si the development version of vue, when we go live we will change this to the production -->
-    <script src="site/JS/vue.js"></script>
-    <script src="site/JS/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- MOments is a light weight quic way of handling dates: https://momentjs.com/-->
     <script src="site/JS/moment-with-locales.min.js"></script>
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
@@ -35,20 +35,23 @@
       </div>
     </header>
     <article id="home" class="panel" v-if="menuIndex == 0">
-      <p>Welcome to Form Bot. </p>
-      <p>Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports.</p>
-      <p>Form scriber was developed by Team Dialogflow of University of Maryland Global Campus' Masters IT Software Engineering Capstone course.</p>
+      <h1>About Form Scriber</h1>
+      <p>Form Scriber is an Artificial Intelligence agent which assists users in filling out repetetive forms and reports. It was developed by Team Dialogflow of University of Maryland Global Campus' Masters IT Software Engineering Capstone course.</p>
+      <p><a href="site/SWEN670_TeamDialogflow_Research_paper.pdf" target="_blank">Research Paper</a></p>
+      <h2>Introduction Video</h2>
+      <div style="position:relative; overflow:hidden; padding-bottom:56.25%"> <iframe src="https://cdn.jwplayer.com/players/kDNWnQmJ-Wpvd0P4v.html" width="100%" height="100%" frameborder="0" scrolling="auto" title="Swen 670 Dialogflow 1080" style="position:absolute;" allowfullscreen></iframe> </div>
       <p>
-        <a href="https://docs.google.com/document/d/1yW5pGxqwNWkhrDbq4ykZ4b07P42PdQJfzlVGfUBPLq0/edit?usp=sharing">Privacy Policy</a><br/>
-        <a href="https://docs.google.com/document/d/1NoJaVAYKRDnF-3Yy6AKxeZWuVI-rTEJQ9P8UO5lDVcE/edit?usp=sharing">Terms of Service</a>
+        <a href="https://github.com/umgc/umgc.formbot.dialogflow" target="_blank">GitHub</a></br>
+        <a href="https://docs.google.com/document/d/1yW5pGxqwNWkhrDbq4ykZ4b07P42PdQJfzlVGfUBPLq0/edit?usp=sharing" target="_blank">Privacy Policy</a><br/>
+        <a href="https://docs.google.com/document/d/1NoJaVAYKRDnF-3Yy6AKxeZWuVI-rTEJQ9P8UO5lDVcE/edit?usp=sharing" target="_blank">Terms of Service</a>
       </p>
     </article>
     <article id="team" class="panel" v-if="menuIndex == 1">
       <h2>Team Dialogflow:</h2>
       <table>
         <thead><tr>
-          <th class="role">Role</th>
-          <th class="name">Name</th>
+          <th class="role" scope="col">Role</th>
+          <th class="name" scope="col">Name</th>
         </tr></thead>
         <tbody>
           <tr v-for="m in teamRoster">
@@ -71,8 +74,8 @@
           </article>
       </section>
       <section class="info trubleshoot">
-        <h3>Trubleshoot</h3>
-        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'Trubleshoot'">
+        <h3>Troubleshoot</h3>
+        <article class="FAQ" v-for="(FAQ, index) in filteredFAQs" @click="togelFAQ(index)" v-if="FAQ.c == 'Troubleshoot'">
             <header class="title" v-html="FAQ.q"></header>
             <section class="content" v-html="FAQ.a" v-if="FAQ.show"></section>
         </article>
@@ -92,7 +95,7 @@
           <article id="howTo" v-if="howToIndex > 0">
             <section id="s01" v-if="howToIndex == 1">
               <p>You will ne to first grant Form Scriber access to your Google Drive. go to your google drive folder that has your templtes you want to fill out and add formbot@form-bot-1577a.iam.gserviceaccount.com as a editor.</p>
-              <img src="site/IMG/addFSasEdiot.png"/>
+              <img src="site/IMG/addFSasEdiot.png" atl="Adding Form Scriber as a editor to you google drive folder."/>
               <p>Then copy the URL to that Drive folder.</p>
               <div class="btn" @click="howTo(2)">Next</div>
               <div class="btn" @click="howTo(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
@@ -106,8 +109,8 @@
               <div class="btn" @click="howTo(0)"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
             </section>
             <section id="s03"   v-if="howToIndex == 3">
-              <p>Click on the URL button next to the form you wish to use. THis will copy a link to your form. Then, tell Form Scriber that you want "Start a new Report".</p>
-              <img src="site/IMG/usingFS.png" />
+              <p>Click on the URL button next to the form you wish to use. This will copy a link to your form. Then, tell Form Scriber that you want "Start a new Report".</p>
+              <img src="site/IMG/usingFS.png" alt="Example of interacting with Form Scriber"/>
               <p>Form Scriber will ask you for the URL to the form. Paste it and hit enter. Then just say the name of the field you wish to enter. At anytime you can cancel or print your form.</p>
               <div class="btn" @click="howTo(2)">Previous</div>
               <div class="btn" @click="howTo(0)">Finish</div>

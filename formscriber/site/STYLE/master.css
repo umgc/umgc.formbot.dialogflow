@@ -141,8 +141,9 @@ div.nav.wrapper{
 }
 #Docs .view ul{ margin: 0; padding: 0px;}
 #Docs .list .btn{
-    float: right;
-    margin-left: 10px;
+    float: left;
+    margin-right: 10px;
+    font-size: 1rem;
 }
 
 #Docs .doc{
@@ -151,9 +152,11 @@ div.nav.wrapper{
     width: 100%;
     overflow: visible;
 }
+#Docs .doc:nth-child(even) {background: #ccc}
 
 #Docs .doc .title{
     float: left;
+    width: 100%;
 }
 
 #Docs #forms,
@@ -165,12 +168,10 @@ div.nav.wrapper{
 }
 
 #Docs iframe.bot{
-    width: 40%;
-    max-width: 400px; }
+    width: 750px; }
 #Docs #forms{
     margin-left: 20px; 
-    width: 58%;
-    max-width: 600px;  
+    width: 200px;  
 }
 #Docs #forms ul{ 
     list-style: none; 
@@ -179,10 +180,10 @@ div.nav.wrapper{
 
 /* 7.0 How To */
 #howTo{
-    position: relative;
+    position: absolute;
     width: 100vw;
-    height: calc(100vh - 160px);
-    top: -74px; left: -10px;
+    height: calc(100vh - 234px);
+    top: 234px; left: 0px;
     background-color: rgba(49, 48, 48, 0.85);
     color: #fff;
 }
@@ -199,10 +200,11 @@ div.nav.wrapper{
     left: 20px;
 }
 #s02{
-    top: 10px;
+    top: 30px;
     left: 10px;
-    width: calc(100% - 37px);
+    width: 1024px; margin: 0 auto;
 }
+#s02 ##formLocation{width: calc(100% - 180px);}
 #s03{
     width: 600px;
     left: 30%;

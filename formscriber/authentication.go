@@ -4,11 +4,6 @@ import (
 	"net/http"
 )
 
-type testStruct struct {
-	Name    string
-	Address string
-}
-
 func myHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte("Authenticated!"))

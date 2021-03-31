@@ -1,4 +1,4 @@
-module formscriber.com/webhook
+module formbot
 
 go 1.16
 

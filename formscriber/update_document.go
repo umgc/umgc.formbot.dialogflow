@@ -9,6 +9,9 @@ import (
 
 func updateDocument(docid, intent, value string) {
 
+	fmt.Println("\n Debug Intent: " + intent + " Debug value: " + value + "Debug: Docid: " + docid + "\n")
+
+	token := getAccessToken()
 	url := "https://docs.googleapis.com/v1/documents/" + docid + ":batchUpdate"
 	method := "POST"
 
@@ -33,7 +36,7 @@ func updateDocument(docid, intent, value string) {
 		fmt.Println(err)
 		return
 	}
-	req.Header.Add("Authorization", "Bearer "+getToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := client.Do(req)

@@ -2,16 +2,34 @@
     "type":"FAQ List",
     "d":[
         {
-            "q":"question",
-            "a":"answer"
+            "q":"Why is my List of Templates not Showing?",
+            "a":"answer",
+            "c":"Troubleshoot"
         },
         {
-            "q":"question",
-            "a":"answer"
+            "q":"How do I start?",
+            "a":"<p>To start say 'Start Report', then copy the URL from your template to Form Scriber. Then Just say the name of the field tou want to input into and then the value you wish to enter.</p>",
+            "c":"How to"
         },
         {
-            "q":"question",
-            "a":"answer"
+            "q":"How do I conect templates?",
+            "a":"<img src=\"site/IMG/addFSasEdiot.png\"/><ol><li>First, go to your google drive folder that has your templates you want to fill out and add <b>formbot@form-bot-1577a.iam.gserviceaccount.com</b> as a editor </li><li>Next, copy the URL to your folder and psate it in the ",
+            "c":"How to"
+        },
+        {
+            "q":"Form Scriber says <em>'There are no fields to update. Please check your Document and return! Goodbye!'</em>",
+            "a":"<p>In you template make sure the following is true</p><ul><li>that all form fields are inside a table</li><li>Your form fields are wrapted in {{}}</li><li>There are now whate spaces within the {{}}.</li></ul>",
+            "c":"Troubleshoot"
+        },
+        {
+            "q":"How do I print my form?",
+            "a":"At anytime, just say print. Form Scriber will give you a link to your completed form for you print.",
+            "c":"How to"
+        },
+        {
+            "q":"How do I create a template",
+            "a":"Once you create a document, create a table. In a cell that you want Form Scriber to edit insert {{my-field-name}}, and replace 'my-field-name' witht he name of the field you want it to be. For Form Sciber to read the white spaces in your field title, makesure you replace them with '-'.",
+            "c":"How to"
         }
     ]
 }

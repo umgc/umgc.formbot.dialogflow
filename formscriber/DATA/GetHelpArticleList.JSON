@@ -3,10 +3,10 @@
     "d":[ 
         {
             "id":1, 
-            "name": "Configureing the Dashboard",
+            "name": "Configuring the Dashboard",
             "URL":"",
             "category":"",
-            "description":"This article covers the proces on how to confiure the dashboard to conect to web services.",
+            "description":"This article covers the proces on how to configure the dashboard to conect to web services.",
             "keywords":["configuration","setup"]
         },
         {

@@ -3,11 +3,17 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"regexp"
+	"strings"
 )
 
 func getDocument(docid string) (get_doc string) {
 
+	//token := t.Access_token
+	token := getAccessToken()
+	fmt.Println("get document token " + token)
 	//RUle for tempaltes in google docs, the values must always be inside a table!
 	url := "https://docs.googleapis.com/v1/documents/" + docid + "?fields=body(content/table/tableRows/tableCells/content/paragraph/elements/textRun/content)"
 	method := "GET"
@@ -19,7 +25,7 @@ func getDocument(docid string) (get_doc string) {
 		fmt.Println(err)
 		return
 	}
-	req.Header.Add("Authorization", "Bearer "+getToken())
+	req.Header.Add("Authorization", "Bearer "+token)
 
 	res, err := client.Do(req)
 	if err != nil {
@@ -35,8 +41,89 @@ func getDocument(docid string) (get_doc string) {
 	}
 	fmt.Println(string(body))
 	get_doc = string(body)
-	return get_doc
 
+	//parse out template fields
+
+	//extract fields
+
+	regex := regexp.MustCompile("{{(.*?)}}")
+	field := regex.FindAll([]byte(get_doc), -1)
+
+	fmt.Printf("%q\n", field)
+
+	//todooo: implement if no fields found:
+
+	fmt.Printf("len=%d cap=%d\n", len(field), cap(field))
+
+	if len(field) < 1 {
+		get_doc = "error"
+		//no fields found. Return an error.
+		fmt.Printf("\n No fields found ABORTING! \n")
+		return
+	}
+
+	// Extract Doc ID:
+
+	//iterate through slice and build dynamic intents in dialogflow
+	fmt.Printf("\n Start PARSING FIELDS!TEST \n")
+
+	//go dynamicIntent(len(field))
+
+	for i := 1; i < len(field)+1; i++ {
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		//isolate the field and iterate
+		value := field[i-1]
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		//convert byte to String so we can manipulate it
+		var valueString string
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		valueString = string(value)
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		//remove the tags
+		valueString = strings.TrimPrefix(valueString, "{{")
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		valueString = strings.TrimSuffix(valueString, "}}")
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+
+		fmt.Println("\nhere it is: " + valueString)
+
+		//Do concurrently so we don't wait to make dynamic intents
+		//If intent is made we get an HTTP 400
+		go createDynamicIntent(valueString)
+		if err != nil {
+			log.Println("Error : something terrible happen -> ", err)
+
+		}
+		//fmt.Printf("%q\n", value)
+
+		//Make APi call to Dialogflow and update intent
+
+		fmt.Printf("\n END PARSING FIELDS! \n")
+
+		//return
+
+	}
+	//fieldList = field
+	//fieldList = "helloworld"
+	return get_doc
 }
 
 type Getdoc struct {

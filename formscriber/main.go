@@ -1,13 +1,13 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 type Tokenresponse struct {
@@ -31,7 +31,7 @@ func errorHandler(res http.ResponseWriter, req *http.Request, status int) {
 
 func robot(res http.ResponseWriter, req *http.Request) {
 
-	http.ServeFile(res, req, "assets/robots.txt")
+	http.ServeFile(res, req, "robots.txt")
 
 }
 
@@ -64,7 +64,7 @@ func about(res http.ResponseWriter, req *http.Request) {
 	//end log
 	log.Println("successfully served about!")
 
-	http.ServeFile(res, req, "html/about.html")
+	http.ServeFile(res, req, "about.html")
 }
 
 func index(res http.ResponseWriter, req *http.Request) {
@@ -83,118 +83,12 @@ func index(res http.ResponseWriter, req *http.Request) {
 	//end log
 	log.Println("successfully served index!")
 
-	http.ServeFile(res, req, "html/index.html")
+	http.ServeFile(res, req, "index.html")
 }
 
 /* 2.0 RESTful services
  * the following are the REST request handlers
  */
-
-/* 2.1 GET Hep Articles
- * URL: http://localhost:8080/getArticles
- */
-type Articles struct {
-	Type string    `json:"type"`
-	D    []Article `json:"d"`
-}
-type Article struct {
-	ID       string   `json:"id,omitempty"`
-	Name     string   `json:"name,omitempty"`
-	Desc     string   `json:"description,omitempty"`
-	URL      string   `json:"URL"`
-	KeyWords *KeyWord `json:"keywords,omitempty"`
-}
-type KeyWord struct {
-	Name string `json:"name,omitempty"`
-}
-
-func GetArticleEndPoint(w http.ResponseWriter, request *http.Request) {
-	//	REST endpoint to get articles
-	jsonFile, err := os.Open("DATA/GetHelpArticleList.JSON")
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
-
-	// read our opened JSON as a byte array.
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	// we initialize our Users array
-	var articles Articles
-	json.Unmarshal(byteValue, &articles)
-
-	json.NewEncoder(w).Encode(articles)
-}
-
-/* 2.2 GET Team
- * URL: http://localhost:8080/getTeam
- */
-type Team struct {
-	Type string       `json:"type"`
-	D    []TeamMember `json:"d"`
-}
-type TeamMember struct {
-	FName string `json:"fname"`
-	LName string `json:"lname"`
-	Role  string `json:"role"`
-}
-
-func GetTeamEndPoint(w http.ResponseWriter, request *http.Request) {
-	//	REST endpoint to get articles
-	jsonFile, err := os.Open("DATA/GetTeam.JSON")
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
-
-	// read our opened JSON as a byte array.
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	// we initialize our Users array
-	var team Team
-	json.Unmarshal(byteValue, &team)
-
-	json.NewEncoder(w).Encode(team)
-}
-
-/* 2.3 GET HAQs
- * URL: http://localhost:8080/getFAQs
- */
-type FAQs struct {
-	Type string `json:"type"`
-	D    []FAQ  `json:"d"`
-}
-type FAQ struct {
-	Q string `json:"q"`
-	A string `json:"a"`
-}
-
-func GetFAQsEndPoint(w http.ResponseWriter, request *http.Request) {
-	//	REST endpoint to get articles
-	jsonFile, err := os.Open("DATA/GetFAQs.JSON")
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
-
-	// read our opened JSON as a byte array.
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-
-	// we initialize our Users array
-	var faqs FAQs
-	json.Unmarshal(byteValue, &faqs)
-
-	json.NewEncoder(w).Encode(faqs)
-}
 
 /* Main Code
  * THis is where everything is activated
@@ -207,9 +101,13 @@ func main() {
 	}
 	log.Println("Engine running...")
 
+	//Create and sign JWT
+	getAccessToken()
+
 	http.HandleFunc("/api", use(myHandler, basicAuth))
 	http.HandleFunc("/about", about)
 	http.HandleFunc("/", index)
+	http.HandleFunc("/drive", use(myHandler, driveAuth))
 	//http.HandleFunc("/google259e7adf5a143f76.html", googleSearchConsole)
 	//http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
@@ -218,14 +116,14 @@ func main() {
 	http.Handle("/assets/images/", http.StripPrefix("/assets/images/", http.FileServer(http.Dir("images"))))
 	//http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	//http.Handle("/vendor/", http.StripPrefix("/vendor/", http.FileServer(http.Dir("vendor"))))
-	//http.Handle("/media/", http.StripPrefix("/media/", http.FileServer(http.Dir("media"))))
+	//
 
 	http.Handle("/site/", http.StripPrefix("/site/", http.FileServer(http.Dir("site"))))
 	http.Handle("/site/STYLE/", http.StripPrefix("/site/STYLE/", http.FileServer(http.Dir("site/STYLE/"))))
 	http.Handle("/site/JS/", http.StripPrefix("/site/JS/", http.FileServer(http.Dir("site/JS/"))))
 	http.Handle("/site/IMG/", http.StripPrefix("/site/IMG/", http.FileServer(http.Dir("site/IMG"))))
 
-	http.HandleFunc("/getArticles", GetArticleEndPoint)
+	http.HandleFunc("/getArticles", GetArticlesEndPoint)
 	http.HandleFunc("/getTeam", GetTeamEndPoint)
 	http.HandleFunc("/getFAQs", GetFAQsEndPoint)
 
@@ -237,19 +135,14 @@ func main() {
 		panic(err)
 	}
 	defer logFile.Close()
-
-
-	// Start the HTTPS server in a goroutine
-	log.Fatal(http.ListenAndServe(":80", nil))
-
-	if err := http.ListenAndServeTLS(":443", "formscriber.com.pem", "formscriber.key", nil); err != nil {
-		log.Fatal("failed to start server", err)
-	} //*/
-
-	log.Println("Server running on http 80 and https 443")
-	// Cerbot Free SSL instruction: https://certbot.eff.org/lets-encrypt/windows-other
-	
 	// direct all log messages to webrequests.log
 	log.SetOutput(logFile)
+
+	// Start the HTTPS server in a goroutine
+	if err := http.ListenAndServeTLS(":443", "formscriber.com.pem", "formscriber.key", nil); err != nil {
+		log.Fatal("failed to start server", err)
+	}
+
+	// Cerbot Free SSL instruction: https://certbot.eff.org/lets-encrypt/windows-other
 
 }

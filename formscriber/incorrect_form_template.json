@@ -1,0 +1,11 @@
+{
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            "No fields in your template found. Please ensure your fields are in this format: {{my-field-name}} and that the field is inside a table cell. Also ensure you have shared your document with: formbot@form-bot-1577a.iam.gserviceaccount.com For further information please visit www.formscriober.com for more instructions. Goodbye"
+          ]
+        }
+      }
+    ]
+  }

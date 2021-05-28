@@ -1,0 +1,36 @@
+{
+    
+	"intentBatchInline": {
+    "intents": [
+        {
+            "displayName": "healthcare-expert",
+            "priority": 500000,
+            "webhookState": "WEBHOOK_STATE_ENABLED",
+            "inputContextNames": [
+                "projects/form-bot-1577a/agent/sessions/-/contexts/GoogleTemplate",
+                "projects/form-bot-1577a/agent/sessions/-/contexts/DefaultWelcomeIntent-custom-followup"
+            ],
+            "action": "FillDocField",
+            "parameters": [
+                {
+                    "name": "b8bcf595-1a59-44d9-9fb3-c5f9e7bc959e",
+                    "displayName": "healthcare-expert",
+                    "value": "$healthcare-expert",
+                    "entityTypeDisplayName": "@sys.any",
+                    "mandatory": true
+                }
+            ],
+            "messages": [
+                {
+                    "text": {
+                        "text": [
+                            "$healthcare-expert recorded. Which field would like me to fill out next? Or if you're finished with your report just say stop."
+                        ]
+                    }
+                }
+            ],
+            "parentFollowupIntentName": "projects/form-bot-1577a/agent/intents/fd80bbe1-072f-4d61-82c5-c491bd532166"
+        }        
+    ]
+}
+}

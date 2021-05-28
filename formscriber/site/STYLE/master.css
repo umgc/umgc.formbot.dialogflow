@@ -1,11 +1,20 @@
 /* 1.0 General */
 html{font-size: 16px;}
-body{font-size: 1.25rem;}
+body{font-size: 1.25rem; 
+    overflow-x: hidden;}
+[v-cloak]{display: none;}
+
+/* 1.1 Clear Fix */
+.cf{overflow:auto;}
+.cf::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 
 /* 2.0 Controls and links */
-.btn{ 
-    background-color: #313030;
-    border: 1px solid #313030;
+.btn{
     color:#fff;
     font-size: 1.25rem;
 }
@@ -13,7 +22,19 @@ body{font-size: 1.25rem;}
     background-color: #fff;
     color: #313030;
 }
+.load.control{
+    margin-bottom: 20px;
+}
+#formLocation{
+    width:calc(100% - 160px);
+float: left;
+margin: 2px 20px 0 0;}
 
+article.panel .btn{
+    background-color: #313030; 
+    border: 1px solid #313030;
+}
+article.panel .btn:hover{ background-color: #fff;}
 /* 3.0 Tables */
 thead{background-color: #313030;}
 thead th{
@@ -25,23 +46,39 @@ thead th{
 tbody{border: 1px solid #ccc;}
 tbody tr:nth-child(even) {background: #ccc;}
 
-/* 4.0 Branding */
-/* 4.1 Logo */
-header.root{
-    background: #313030;
-    padding: 10px;
-}
-#logo{margin-bottom: 20px;}
-#logo g path{
-    fill: #fff;
-}
+/* 4.0 Navagation */
 
-/* 3.2 Panels */
+#mobile{width: 100%; }
+#mobileMenu{width: 100%;padding: 10px 0 ;}
+#mobileMenu i{
+    color: #fff;
+    margin-left: 45%;
+    font-size: 2rem;}
+
+nav.PC{
+    width: 470px;
+    margin: 0 auto;}
+
+nav.mobile{ width: 100%;}
+
+nav.mobile .tab{
+    color: #fff;
+    font-size: 1.75rem;
+    border-top: 1px solid #fff;
+    padding-left: 10px;
+}
+/* 5.0 Layout */
+
+
+/* 5.1 Panels */
 article.panel{
     padding: 10px;
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
-/* 3.2.4 Help article */
+/* 5.1.1 Help article */
 
 article.helpArticle{
     margin-bottom: 20px;
@@ -55,4 +92,153 @@ article.helpArticle header.title{
 article.helpArticle section.content{
     padding: 5px;
     border: 1px solid #313030;
+}
+
+/* 5.1.1 App */
+#App iframe{
+    width: calc(100vw - 20px);
+    max-width: 600px;
+    height: 430px;
+}
+
+/* 6.0 Branding */
+
+header.root{
+    background: #313030;
+    padding: 0px;
+}
+div.nav.wrapper{
+    width: 100%;
+    background: #20409a;
+    margin-top: 20px;
+}
+#PC.nav {
+    padding: 10px;
+}
+
+/* 6.1 Logo */
+
+#logo{
+    padding:10px;
+    display: block;
+    margin: auto;
+    max-height: 150px;
+}
+#logo g path{
+    fill: #fff;
+}
+
+#Docs{
+    width: 100%; 
+}
+#Docs header.controls{margin-bottom: 20px;}
+#Docs .list{
+    height: 400px;
+}
+#Docs iframe{
+    width: 100%;
+    height: 600px;
+}
+#Docs .view ul{ margin: 0; padding: 0px;}
+#Docs .list .btn{
+    float: left;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+#Docs .doc{
+    margin: 0 0 10px 0;
+    padding: 5px;
+    width: 100%;
+    overflow: visible;
+}
+#Docs .doc:nth-child(even) {background: #ccc}
+
+#Docs .doc .title{
+    float: left;
+    width: 100%;
+}
+
+#Docs #forms,
+#Docs iframe.bot{ 
+    height: calc(100vh - 410px);
+    float: left;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#Docs iframe.bot{
+    width: 750px; }
+#Docs #forms{
+    margin-left: 20px; 
+    width: 200px;  
+}
+#Docs #forms ul{ 
+    list-style: none; 
+    overflow-y: auto;
+}
+
+/* 7.0 How To */
+#howTo{
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 234px);
+    top: 234px; left: 0px;
+    background-color: rgba(49, 48, 48, 0.85);
+    color: #fff;
+}
+#howTo .btn{ border-color: #fff;}
+#howTo section{ position: relative;}
+#howTo img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+}
+#s01{
+    width: 90%;
+    top: 10%;
+    left: 20px;
+}
+#s02{
+    top: 30px;
+    left: 10px;
+    width: 1024px; margin: 0 auto;
+}
+#s02 ##formLocation{width: calc(100% - 180px);}
+#s03{
+    width: 600px;
+    left: 30%;
+    top: 10%;
+}
+
+/* 8.0 FAQs */
+#FAQs .info{float: left;}
+#FAQs header.controls{width: 100%;}
+#FAQs section.info{width: 49%; margin-top: 20px;;}
+#FAQs .trubleshoot{margin-left: 20px;}
+
+
+/* 8.1 each FAQ */
+#FAQs .FAQ{margin-top: 10px;}
+#FAQs .FAQ header.title{
+    width: 100%;
+    background-color: #4d4d4e;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+#FAQs .FAQ header.title:hover,
+#FAQs .FAQ header.title.active{
+    background-color:#989898;
+    color: #313030;
+    margin-bottom: 20px;
+}
+
+#FAQs .FAQ .content{
+    padding: 10px;
+    border: 1px solid #4d4d4e;
+}
+#FAQs .FAQ .content img{
+    width: 100%; height: auto;
+    text-align: center;
 }
